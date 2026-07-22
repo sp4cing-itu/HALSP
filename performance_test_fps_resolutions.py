@@ -73,7 +73,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 # ==========================================
 # 2. MODEL LOADERS
 # ==========================================
-def get_custom_halvit_model(path=None):
+def get_custom_halsp_model(path=None):
     try:
         from halsp import ResNet50
         model = ResNet50(num_classes=NUM_CLASSES).to(device)
@@ -218,7 +218,7 @@ if __name__ == "__main__":
     
     # LAZY LOADING
     model_loaders = [
-        lambda: get_custom_halvit_model(MODEL_PATH),
+        lambda: get_custom_halsp_model(MODEL_PATH),
         get_standard_torchvision_model,
         get_efficientnet,
         get_mobilenet,
