@@ -1,214 +1,1017 @@
-[DEBUG] HalspNetStage: 3 Block | Matrix: 64x256 (Shared)
-[DEBUG] HalspNetStage: 4 Block | Matrix: 128x512 (Shared)
-[DEBUG] HalspNetStage: 6 Block | Matrix: 256x1024 (Shared)
-[DEBUG] HalspNetStage: 3 Block | Matrix: 512x2048 (Shared)
+================================================================
+STARTING TRAIN (LR: 0.2, Batch: 256, Accum: 1)
+Device: cuda
+GPU: NVIDIA A100-SXM4-40GB
+================================================================
 
-================================================================================
-MODEL: HalspNet 50 (Dense Eval) BEING ANALYZED
-================================================================================
-[+] Params: 1.71M | FLOPs: 0.7817G
+Preparing Dataset...
+100% 169M/169M [00:14<00:00, 11.8MB/s]
+[DEBUG] HalspNetStage: 3 Blok | Matris: 64x256 (Shared)
+[DEBUG] HalspNetStage: 4 Blok | Matris: 128x512 (Shared)
+[DEBUG] HalspNetStage: 6 Blok | Matris: 256x1024 (Shared)
+[DEBUG] HalspNetStage: 3 Blok | Matris: 512x2048 (Shared)
 
-Batch  | Throughput      | Latency    | VRAM       | GPU %   | Temp   | Power   
--------------------------------------------------------------------------------------
-1      | 307.98          | 3.25       | 33.78      | 22%     | 34C    | 83.1W   
-2      | 616.85          | 3.24       | 52.80      | 39%     | 35C    | 92.2W   
-4      | 1244.28         | 3.21       | 89.33      | 57%     | 36C    | 119.0W  
-8      | 2451.46         | 3.26       | 163.07     | 67%     | 39C    | 178.6W  
-16     | 3849.20         | 4.16       | 303.51     | 93%     | 43C    | 249.8W  
-32     | 4132.90         | 7.74       | 586.22     | 100%    | 44C    | 266.6W  
-64     | 4288.45         | 14.92      | 1155.85    | 100%    | 47C    | 278.6W  
-128    | 4372.49         | 29.27      | 2296.60    | 100%    | 49C    | 287.6W  
-256    | 4424.22         | 57.86      | 4574.60    | 99%     | 52C    | 292.1W  
+Epoch  | Batch  | Loss     | Acc@1    | LR        | GradNorm  
+--------------------------------------------------------------
 
+>>> [STRATEGY CHANGE] WARM-UP STARTING! (All Stages %100 Dense)
+1      | 100    | 4.2997   | 6.45   % | 0.020000  | 2.0643    
+>>> Epoch 1 Ended. Duration: 17.28 sec
+>>> Epoch 1 Summary | Train Top1: %8.48 | Train Top5: %25.82 | Val Top1: %14.67 | Val Top5: %38.39 | Gap: %-6.19 | LR: 0.020000
+--> NEW RECORD! (Top1: %14.67 | Top5: %38.39) Saving...
+2      | 100    | 3.9522   | 13.13  % | 0.038000  | 1.8975    
+>>> Epoch 2 Ended. Duration: 14.72 sec
+>>> Epoch 2 Summary | Train Top1: %14.42 | Train Top5: %36.90 | Val Top1: %21.05 | Val Top5: %49.24 | Gap: %-6.63 | LR: 0.038000
+--> NEW RECORD! (Top1: %21.05 | Top5: %49.24) Saving...
+3      | 100    | 3.7714   | 16.86  % | 0.056000  | 1.8444    
+>>> Epoch 3 Ended. Duration: 14.80 sec
+>>> Epoch 3 Summary | Train Top1: %18.08 | Train Top5: %42.92 | Val Top1: %24.77 | Val Top5: %55.34 | Gap: %-6.69 | LR: 0.056000
+--> NEW RECORD! (Top1: %24.77 | Top5: %55.34) Saving...
+4      | 100    | 3.6053   | 20.98  % | 0.074000  | 1.6316    
+>>> Epoch 4 Ended. Duration: 14.84 sec
+>>> Epoch 4 Summary | Train Top1: %21.88 | Train Top5: %48.21 | Val Top1: %30.72 | Val Top5: %62.23 | Gap: %-8.84 | LR: 0.074000
+--> NEW RECORD! (Top1: %30.72 | Top5: %62.23) Saving...
+5      | 100    | 3.4561   | 24.43  % | 0.092000  | 1.5318    
+>>> Epoch 5 Ended. Duration: 14.85 sec
+>>> Epoch 5 Summary | Train Top1: %25.52 | Train Top5: %52.88 | Val Top1: %31.70 | Val Top5: %63.47 | Gap: %-6.18 | LR: 0.092000
+--> NEW RECORD! (Top1: %31.70 | Top5: %63.47) Saving...
+6      | 100    | 3.3279   | 27.32  % | 0.110000  | 1.4618    
+>>> Epoch 6 Ended. Duration: 14.82 sec
+>>> Epoch 6 Summary | Train Top1: %28.29 | Train Top5: %56.45 | Val Top1: %34.98 | Val Top5: %65.11 | Gap: %-6.69 | LR: 0.110000
+--> NEW RECORD! (Top1: %34.98 | Top5: %65.11) Saving...
+7      | 100    | 3.2209   | 29.80  % | 0.128000  | 1.2615    
+>>> Epoch 7 Ended. Duration: 14.74 sec
+>>> Epoch 7 Summary | Train Top1: %30.68 | Train Top5: %59.41 | Val Top1: %40.96 | Val Top5: %72.56 | Gap: %-10.28 | LR: 0.128000
+--> NEW RECORD! (Top1: %40.96 | Top5: %72.56) Saving...
+8      | 100    | 3.1222   | 32.40  % | 0.146000  | 1.1585    
+>>> Epoch 8 Ended. Duration: 14.82 sec
+>>> Epoch 8 Summary | Train Top1: %33.02 | Train Top5: %61.73 | Val Top1: %41.82 | Val Top5: %73.55 | Gap: %-8.80 | LR: 0.146000
+--> NEW RECORD! (Top1: %41.82 | Top5: %73.55) Saving...
+9      | 100    | 3.0375   | 34.66  % | 0.164000  | 1.1410    
+>>> Epoch 9 Ended. Duration: 14.84 sec
+>>> Epoch 9 Summary | Train Top1: %35.30 | Train Top5: %63.92 | Val Top1: %46.72 | Val Top5: %77.12 | Gap: %-11.42 | LR: 0.164000
+--> NEW RECORD! (Top1: %46.72 | Top5: %77.12) Saving...
+10     | 100    | 2.9705   | 36.86  % | 0.182000  | 1.1367    
+>>> Epoch 10 Ended. Duration: 14.79 sec
+>>> Epoch 10 Summary | Train Top1: %37.21 | Train Top5: %65.83 | Val Top1: %45.34 | Val Top5: %76.74 | Gap: %-8.13 | LR: 0.182000
+    Epoch Val -> Top1: %45.34 (Best: %46.72) | Top5: %76.74
 
-[DEBUG] HalspNetStage: 3 Block | Matrix: 64x256 (Shared)
-[DEBUG] HalspNetStage: 4 Block | Matrix: 128x512 (Shared)
-[DEBUG] HalspNetStage: 23 Block | Matrix: 256x1024 (Shared)
-[DEBUG] HalspNetStage: 3 Block | Matrix: 512x2048 (Shared)
+>>> [STRATEGY CHANGE] SEARCH STARTING! (Comeback to layer settings)
+11     | 100    | 2.9734   | 36.11  % | 0.200000  | 1.0666    
+>>> Epoch 11 Ended. Duration: 14.88 sec
+>>> Epoch 11 Summary | Train Top1: %36.53 | Train Top5: %65.79 | Val Top1: %37.12 | Val Top5: %69.72 | Gap: %-0.59 | LR: 0.200000
+    Epoch Val -> Top1: %37.12 (Best: %46.72) | Top5: %69.72
+12     | 100    | 2.9032   | 38.25  % | 0.199986  | 1.0537    
+>>> Epoch 12 Ended. Duration: 14.51 sec
+>>> Epoch 12 Summary | Train Top1: %38.74 | Train Top5: %67.45 | Val Top1: %36.61 | Val Top5: %67.27 | Gap: %2.13 | LR: 0.199986
+    Epoch Val -> Top1: %36.61 (Best: %46.72) | Top5: %67.27
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 12...
+13     | 100    | 2.8379   | 40.11  % | 0.199945  | 1.0234    
+>>> Epoch 13 Ended. Duration: 14.48 sec
+>>> Epoch 13 Summary | Train Top1: %40.58 | Train Top5: %69.24 | Val Top1: %45.86 | Val Top5: %76.64 | Gap: %-5.28 | LR: 0.199945
+    Epoch Val -> Top1: %45.86 (Best: %46.72) | Top5: %76.64
+14     | 100    | 2.7982   | 40.91  % | 0.199877  | 1.0590    
+>>> Epoch 14 Ended. Duration: 14.51 sec
+>>> Epoch 14 Summary | Train Top1: %41.08 | Train Top5: %70.06 | Val Top1: %43.11 | Val Top5: %74.28 | Gap: %-2.03 | LR: 0.199877
+    Epoch Val -> Top1: %43.11 (Best: %46.72) | Top5: %74.28
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 14...
+15     | 100    | 2.7525   | 42.17  % | 0.199781  | 1.0694    
+>>> Epoch 15 Ended. Duration: 14.46 sec
+>>> Epoch 15 Summary | Train Top1: %42.29 | Train Top5: %71.10 | Val Top1: %48.44 | Val Top5: %78.30 | Gap: %-6.15 | LR: 0.199781
+--> NEW RECORD! (Top1: %48.44 | Top5: %78.30) Saving...
+16     | 100    | 2.7215   | 43.32  % | 0.199659  | 1.0102    
+>>> Epoch 16 Ended. Duration: 14.39 sec
+>>> Epoch 16 Summary | Train Top1: %43.35 | Train Top5: %71.77 | Val Top1: %43.97 | Val Top5: %75.06 | Gap: %-0.62 | LR: 0.199659
+    Epoch Val -> Top1: %43.97 (Best: %48.44) | Top5: %75.06
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 16...
+17     | 100    | 2.6834   | 44.31  % | 0.199509  | 0.9914    
+>>> Epoch 17 Ended. Duration: 14.41 sec
+>>> Epoch 17 Summary | Train Top1: %44.30 | Train Top5: %72.57 | Val Top1: %52.79 | Val Top5: %82.57 | Gap: %-8.49 | LR: 0.199509
+--> NEW RECORD! (Top1: %52.79 | Top5: %82.57) Saving...
+18     | 100    | 2.6489   | 45.51  % | 0.199331  | 1.0330    
+>>> Epoch 18 Ended. Duration: 14.37 sec
+>>> Epoch 18 Summary | Train Top1: %45.30 | Train Top5: %73.18 | Val Top1: %52.76 | Val Top5: %81.52 | Gap: %-7.46 | LR: 0.199331
+    Epoch Val -> Top1: %52.76 (Best: %52.79) | Top5: %81.52
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 18...
+19     | 100    | 2.6287   | 45.98  % | 0.199127  | 0.9827    
+>>> Epoch 19 Ended. Duration: 14.40 sec
+>>> Epoch 19 Summary | Train Top1: %45.46 | Train Top5: %73.59 | Val Top1: %50.98 | Val Top5: %80.08 | Gap: %-5.52 | LR: 0.199127
+    Epoch Val -> Top1: %50.98 (Best: %52.79) | Top5: %80.08
+20     | 100    | 2.6067   | 46.48  % | 0.198895  | 1.0169    
+>>> Epoch 20 Ended. Duration: 14.43 sec
+>>> Epoch 20 Summary | Train Top1: %46.26 | Train Top5: %74.27 | Val Top1: %53.65 | Val Top5: %83.38 | Gap: %-7.39 | LR: 0.198895
+--> NEW RECORD! (Top1: %53.65 | Top5: %83.38) Saving...
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 20...
+21     | 100    | 2.5840   | 47.19  % | 0.198637  | 1.0065    
+>>> Epoch 21 Ended. Duration: 14.50 sec
+>>> Epoch 21 Summary | Train Top1: %46.83 | Train Top5: %74.52 | Val Top1: %53.31 | Val Top5: %83.09 | Gap: %-6.48 | LR: 0.198637
+    Epoch Val -> Top1: %53.31 (Best: %53.65) | Top5: %83.09
+22     | 100    | 2.5828   | 46.87  % | 0.198351  | 0.9689    
+>>> Epoch 22 Ended. Duration: 14.49 sec
+>>> Epoch 22 Summary | Train Top1: %47.23 | Train Top5: %75.16 | Val Top1: %54.02 | Val Top5: %82.68 | Gap: %-6.79 | LR: 0.198351
+--> NEW RECORD! (Top1: %54.02 | Top5: %82.68) Saving...
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 22...
+23     | 100    | 2.5501   | 47.86  % | 0.198039  | 1.0545    
+>>> Epoch 23 Ended. Duration: 14.39 sec
+>>> Epoch 23 Summary | Train Top1: %47.84 | Train Top5: %75.51 | Val Top1: %55.67 | Val Top5: %83.21 | Gap: %-7.83 | LR: 0.198039
+--> NEW RECORD! (Top1: %55.67 | Top5: %83.21) Saving...
+24     | 100    | 2.5420   | 48.43  % | 0.197700  | 1.1470    
+>>> Epoch 24 Ended. Duration: 14.37 sec
+>>> Epoch 24 Summary | Train Top1: %48.46 | Train Top5: %75.92 | Val Top1: %53.15 | Val Top5: %82.24 | Gap: %-4.69 | LR: 0.197700
+    Epoch Val -> Top1: %53.15 (Best: %55.67) | Top5: %82.24
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 24...
+25     | 100    | 2.5291   | 48.65  % | 0.197334  | 1.0375    
+>>> Epoch 25 Ended. Duration: 14.41 sec
+>>> Epoch 25 Summary | Train Top1: %48.43 | Train Top5: %75.88 | Val Top1: %54.80 | Val Top5: %82.29 | Gap: %-6.37 | LR: 0.197334
+    Epoch Val -> Top1: %54.80 (Best: %55.67) | Top5: %82.29
+26     | 100    | 2.5148   | 48.87  % | 0.196942  | 1.0350    
+>>> Epoch 26 Ended. Duration: 14.45 sec
+>>> Epoch 26 Summary | Train Top1: %48.61 | Train Top5: %76.12 | Val Top1: %52.12 | Val Top5: %81.55 | Gap: %-3.51 | LR: 0.196942
+    Epoch Val -> Top1: %52.12 (Best: %55.67) | Top5: %81.55
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 26...
+27     | 100    | 2.4870   | 49.69  % | 0.196523  | 0.9722    
+>>> Epoch 27 Ended. Duration: 14.42 sec
+>>> Epoch 27 Summary | Train Top1: %49.17 | Train Top5: %76.56 | Val Top1: %54.18 | Val Top5: %83.50 | Gap: %-5.01 | LR: 0.196523
+    Epoch Val -> Top1: %54.18 (Best: %55.67) | Top5: %83.50
+28     | 100    | 2.4748   | 49.95  % | 0.196077  | 1.0385    
+>>> Epoch 28 Ended. Duration: 14.39 sec
+>>> Epoch 28 Summary | Train Top1: %49.47 | Train Top5: %76.84 | Val Top1: %54.69 | Val Top5: %83.12 | Gap: %-5.22 | LR: 0.196077
+    Epoch Val -> Top1: %54.69 (Best: %55.67) | Top5: %83.12
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 28...
+29     | 100    | 2.4775   | 50.23  % | 0.195606  | 1.0883    
+>>> Epoch 29 Ended. Duration: 14.49 sec
+>>> Epoch 29 Summary | Train Top1: %49.67 | Train Top5: %77.09 | Val Top1: %53.58 | Val Top5: %82.62 | Gap: %-3.91 | LR: 0.195606
+    Epoch Val -> Top1: %53.58 (Best: %55.67) | Top5: %82.62
+30     | 100    | 2.4521   | 50.73  % | 0.195108  | 1.0906    
+>>> Epoch 30 Ended. Duration: 14.51 sec
+>>> Epoch 30 Summary | Train Top1: %50.25 | Train Top5: %77.43 | Val Top1: %55.45 | Val Top5: %83.54 | Gap: %-5.20 | LR: 0.195108
+    Epoch Val -> Top1: %55.45 (Best: %55.67) | Top5: %83.54
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 30...
+31     | 100    | 2.4559   | 50.67  % | 0.194584  | 1.0003    
+>>> Epoch 31 Ended. Duration: 14.39 sec
+>>> Epoch 31 Summary | Train Top1: %50.47 | Train Top5: %77.85 | Val Top1: %52.57 | Val Top5: %80.80 | Gap: %-2.10 | LR: 0.194584
+    Epoch Val -> Top1: %52.57 (Best: %55.67) | Top5: %80.80
+32     | 100    | 2.4501   | 50.84  % | 0.194035  | 1.0508    
+>>> Epoch 32 Ended. Duration: 14.48 sec
+>>> Epoch 32 Summary | Train Top1: %50.66 | Train Top5: %77.82 | Val Top1: %57.24 | Val Top5: %85.10 | Gap: %-6.58 | LR: 0.194035
+--> NEW RECORD! (Top1: %57.24 | Top5: %85.10) Saving...
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 32...
+33     | 100    | 2.4277   | 51.59  % | 0.193460  | 1.0676    
+>>> Epoch 33 Ended. Duration: 14.48 sec
+>>> Epoch 33 Summary | Train Top1: %50.91 | Train Top5: %77.88 | Val Top1: %53.07 | Val Top5: %81.58 | Gap: %-2.16 | LR: 0.193460
+    Epoch Val -> Top1: %53.07 (Best: %57.24) | Top5: %81.58
+34     | 100    | 2.4366   | 51.05  % | 0.192859  | 1.1208    
+>>> Epoch 34 Ended. Duration: 14.39 sec
+>>> Epoch 34 Summary | Train Top1: %50.58 | Train Top5: %77.98 | Val Top1: %53.49 | Val Top5: %82.23 | Gap: %-2.91 | LR: 0.192859
+    Epoch Val -> Top1: %53.49 (Best: %57.24) | Top5: %82.23
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 34...
+35     | 100    | 2.4186   | 51.95  % | 0.192233  | 1.1472    
+>>> Epoch 35 Ended. Duration: 14.37 sec
+>>> Epoch 35 Summary | Train Top1: %51.36 | Train Top5: %78.22 | Val Top1: %60.13 | Val Top5: %86.50 | Gap: %-8.77 | LR: 0.192233
+--> NEW RECORD! (Top1: %60.13 | Top5: %86.50) Saving...
+36     | 100    | 2.4168   | 51.73  % | 0.191582  | 1.0252    
+>>> Epoch 36 Ended. Duration: 14.49 sec
+>>> Epoch 36 Summary | Train Top1: %51.46 | Train Top5: %78.59 | Val Top1: %51.30 | Val Top5: %80.34 | Gap: %0.16 | LR: 0.191582
+    Epoch Val -> Top1: %51.30 (Best: %60.13) | Top5: %80.34
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 36...
+37     | 100    | 2.4060   | 51.93  % | 0.190905  | 1.1156    
+>>> Epoch 37 Ended. Duration: 14.40 sec
+>>> Epoch 37 Summary | Train Top1: %51.71 | Train Top5: %78.83 | Val Top1: %58.76 | Val Top5: %85.45 | Gap: %-7.05 | LR: 0.190905
+    Epoch Val -> Top1: %58.76 (Best: %60.13) | Top5: %85.45
+38     | 100    | 2.3894   | 52.48  % | 0.190204  | 1.0468    
+>>> Epoch 38 Ended. Duration: 14.48 sec
+>>> Epoch 38 Summary | Train Top1: %52.34 | Train Top5: %78.70 | Val Top1: %55.58 | Val Top5: %84.13 | Gap: %-3.24 | LR: 0.190204
+    Epoch Val -> Top1: %55.58 (Best: %60.13) | Top5: %84.13
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 38...
+39     | 100    | 2.3759   | 53.09  % | 0.189478  | 1.0218    
+>>> Epoch 39 Ended. Duration: 14.41 sec
+>>> Epoch 39 Summary | Train Top1: %52.48 | Train Top5: %78.83 | Val Top1: %58.91 | Val Top5: %86.01 | Gap: %-6.43 | LR: 0.189478
+    Epoch Val -> Top1: %58.91 (Best: %60.13) | Top5: %86.01
+40     | 100    | 2.3755   | 52.75  % | 0.188728  | 1.0579    
+>>> Epoch 40 Ended. Duration: 14.50 sec
+>>> Epoch 40 Summary | Train Top1: %52.38 | Train Top5: %79.29 | Val Top1: %57.36 | Val Top5: %84.76 | Gap: %-4.98 | LR: 0.188728
+    Epoch Val -> Top1: %57.36 (Best: %60.13) | Top5: %84.76
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 40...
+41     | 100    | 2.3577   | 53.23  % | 0.187953  | 1.0327    
+>>> Epoch 41 Ended. Duration: 14.49 sec
+>>> Epoch 41 Summary | Train Top1: %52.75 | Train Top5: %79.48 | Val Top1: %52.08 | Val Top5: %81.83 | Gap: %0.67 | LR: 0.187953
+    Epoch Val -> Top1: %52.08 (Best: %60.13) | Top5: %81.83
+42     | 100    | 2.3783   | 52.54  % | 0.187155  | 1.0368    
+>>> Epoch 42 Ended. Duration: 14.45 sec
+>>> Epoch 42 Summary | Train Top1: %52.68 | Train Top5: %79.40 | Val Top1: %57.45 | Val Top5: %84.42 | Gap: %-4.77 | LR: 0.187155
+    Epoch Val -> Top1: %57.45 (Best: %60.13) | Top5: %84.42
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 42...
+43     | 100    | 2.3533   | 53.22  % | 0.186332  | 0.9958    
+>>> Epoch 43 Ended. Duration: 14.40 sec
+>>> Epoch 43 Summary | Train Top1: %53.12 | Train Top5: %79.67 | Val Top1: %59.25 | Val Top5: %86.11 | Gap: %-6.13 | LR: 0.186332
+    Epoch Val -> Top1: %59.25 (Best: %60.13) | Top5: %86.11
+44     | 100    | 2.3425   | 53.80  % | 0.185487  | 1.0901    
+>>> Epoch 44 Ended. Duration: 14.49 sec
+>>> Epoch 44 Summary | Train Top1: %53.19 | Train Top5: %79.88 | Val Top1: %60.51 | Val Top5: %86.85 | Gap: %-7.32 | LR: 0.185487
+--> NEW RECORD! (Top1: %60.51 | Top5: %86.85) Saving...
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 44...
+45     | 100    | 2.3566   | 53.30  % | 0.184617  | 1.0444    
+>>> Epoch 45 Ended. Duration: 14.37 sec
+>>> Epoch 45 Summary | Train Top1: %53.35 | Train Top5: %79.85 | Val Top1: %55.37 | Val Top5: %83.53 | Gap: %-2.02 | LR: 0.184617
+    Epoch Val -> Top1: %55.37 (Best: %60.51) | Top5: %83.53
+46     | 100    | 2.3441   | 53.78  % | 0.183725  | 1.1094    
+>>> Epoch 46 Ended. Duration: 14.39 sec
+>>> Epoch 46 Summary | Train Top1: %53.58 | Train Top5: %79.75 | Val Top1: %57.80 | Val Top5: %86.36 | Gap: %-4.22 | LR: 0.183725
+    Epoch Val -> Top1: %57.80 (Best: %60.51) | Top5: %86.36
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 46...
+47     | 100    | 2.3321   | 54.17  % | 0.182809  | 1.0404    
+>>> Epoch 47 Ended. Duration: 14.51 sec
+>>> Epoch 47 Summary | Train Top1: %53.90 | Train Top5: %80.15 | Val Top1: %57.58 | Val Top5: %84.63 | Gap: %-3.68 | LR: 0.182809
+    Epoch Val -> Top1: %57.58 (Best: %60.51) | Top5: %84.63
+48     | 100    | 2.3291   | 54.32  % | 0.181872  | 1.0871    
+>>> Epoch 48 Ended. Duration: 14.45 sec
+>>> Epoch 48 Summary | Train Top1: %53.97 | Train Top5: %80.27 | Val Top1: %57.98 | Val Top5: %84.77 | Gap: %-4.01 | LR: 0.181872
+    Epoch Val -> Top1: %57.98 (Best: %60.51) | Top5: %84.77
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 48...
+49     | 100    | 2.3194   | 54.57  % | 0.180911  | 1.1537    
+>>> Epoch 49 Ended. Duration: 14.36 sec
+>>> Epoch 49 Summary | Train Top1: %54.31 | Train Top5: %80.13 | Val Top1: %59.08 | Val Top5: %86.43 | Gap: %-4.77 | LR: 0.180911
+    Epoch Val -> Top1: %59.08 (Best: %60.51) | Top5: %86.43
+50     | 100    | 2.3146   | 54.46  % | 0.179929  | 1.0855    
+>>> Epoch 50 Ended. Duration: 14.48 sec
+>>> Epoch 50 Summary | Train Top1: %54.18 | Train Top5: %80.45 | Val Top1: %58.81 | Val Top5: %85.47 | Gap: %-4.63 | LR: 0.179929
+    Epoch Val -> Top1: %58.81 (Best: %60.51) | Top5: %85.47
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 50...
+51     | 100    | 2.2936   | 54.94  % | 0.178925  | 1.0576    
+>>> Epoch 51 Ended. Duration: 14.40 sec
+>>> Epoch 51 Summary | Train Top1: %54.47 | Train Top5: %80.70 | Val Top1: %57.59 | Val Top5: %85.69 | Gap: %-3.12 | LR: 0.178925
+    Epoch Val -> Top1: %57.59 (Best: %60.51) | Top5: %85.69
+52     | 100    | 2.2940   | 55.14  % | 0.177899  | 1.0441    
+>>> Epoch 52 Ended. Duration: 14.40 sec
+>>> Epoch 52 Summary | Train Top1: %54.76 | Train Top5: %81.05 | Val Top1: %53.44 | Val Top5: %81.52 | Gap: %1.32 | LR: 0.177899
+    Epoch Val -> Top1: %53.44 (Best: %60.51) | Top5: %81.52
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 52...
+53     | 100    | 2.2943   | 54.93  % | 0.176852  | 1.1135    
+>>> Epoch 53 Ended. Duration: 14.49 sec
+>>> Epoch 53 Summary | Train Top1: %54.58 | Train Top5: %80.80 | Val Top1: %57.87 | Val Top5: %85.32 | Gap: %-3.29 | LR: 0.176852
+    Epoch Val -> Top1: %57.87 (Best: %60.51) | Top5: %85.32
+54     | 100    | 2.2997   | 54.64  % | 0.175784  | 1.0668    
+>>> Epoch 54 Ended. Duration: 14.43 sec
+>>> Epoch 54 Summary | Train Top1: %54.64 | Train Top5: %80.97 | Val Top1: %58.08 | Val Top5: %85.31 | Gap: %-3.44 | LR: 0.175784
+    Epoch Val -> Top1: %58.08 (Best: %60.51) | Top5: %85.31
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 54...
+55     | 100    | 2.2886   | 55.57  % | 0.174695  | 1.1327    
+>>> Epoch 55 Ended. Duration: 14.40 sec
+>>> Epoch 55 Summary | Train Top1: %55.02 | Train Top5: %81.17 | Val Top1: %58.78 | Val Top5: %85.73 | Gap: %-3.76 | LR: 0.174695
+    Epoch Val -> Top1: %58.78 (Best: %60.51) | Top5: %85.73
+56     | 100    | 2.2784   | 55.61  % | 0.173586  | 1.1104    
+>>> Epoch 56 Ended. Duration: 14.48 sec
+>>> Epoch 56 Summary | Train Top1: %55.05 | Train Top5: %81.04 | Val Top1: %60.89 | Val Top5: %86.75 | Gap: %-5.84 | LR: 0.173586
+--> NEW RECORD! (Top1: %60.89 | Top5: %86.75) Saving...
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 56...
+57     | 100    | 2.2761   | 55.66  % | 0.172456  | 1.0623    
+>>> Epoch 57 Ended. Duration: 14.50 sec
+>>> Epoch 57 Summary | Train Top1: %55.43 | Train Top5: %81.18 | Val Top1: %61.33 | Val Top5: %86.67 | Gap: %-5.90 | LR: 0.172456
+--> NEW RECORD! (Top1: %61.33 | Top5: %86.67) Saving...
+58     | 100    | 2.2696   | 55.82  % | 0.171307  | 1.1089    
+>>> Epoch 58 Ended. Duration: 14.40 sec
+>>> Epoch 58 Summary | Train Top1: %55.36 | Train Top5: %81.00 | Val Top1: %59.30 | Val Top5: %86.75 | Gap: %-3.94 | LR: 0.171307
+    Epoch Val -> Top1: %59.30 (Best: %61.33) | Top5: %86.75
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 58...
+59     | 100    | 2.2647   | 55.79  % | 0.170139  | 1.0924    
+>>> Epoch 59 Ended. Duration: 14.48 sec
+>>> Epoch 59 Summary | Train Top1: %55.30 | Train Top5: %81.21 | Val Top1: %56.28 | Val Top5: %84.56 | Gap: %-0.98 | LR: 0.170139
+    Epoch Val -> Top1: %56.28 (Best: %61.33) | Top5: %84.56
+60     | 100    | 2.2569   | 56.07  % | 0.168951  | 1.0703    
+>>> Epoch 60 Ended. Duration: 14.42 sec
+>>> Epoch 60 Summary | Train Top1: %55.51 | Train Top5: %81.40 | Val Top1: %55.28 | Val Top5: %84.25 | Gap: %0.23 | LR: 0.168951
+    Epoch Val -> Top1: %55.28 (Best: %61.33) | Top5: %84.25
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 60...
+61     | 100    | 2.2480   | 56.54  % | 0.167744  | 1.1918    
+>>> Epoch 61 Ended. Duration: 14.41 sec
+>>> Epoch 61 Summary | Train Top1: %55.82 | Train Top5: %81.66 | Val Top1: %60.41 | Val Top5: %86.97 | Gap: %-4.59 | LR: 0.167744
+    Epoch Val -> Top1: %60.41 (Best: %61.33) | Top5: %86.97
+62     | 100    | 2.2630   | 55.83  % | 0.166519  | 1.1157    
+>>> Epoch 62 Ended. Duration: 14.44 sec
+>>> Epoch 62 Summary | Train Top1: %55.57 | Train Top5: %81.56 | Val Top1: %57.18 | Val Top5: %84.94 | Gap: %-1.61 | LR: 0.166519
+    Epoch Val -> Top1: %57.18 (Best: %61.33) | Top5: %84.94
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 62...
+63     | 100    | 2.2338   | 56.69  % | 0.165276  | 1.0086    
+>>> Epoch 63 Ended. Duration: 14.52 sec
+>>> Epoch 63 Summary | Train Top1: %56.31 | Train Top5: %81.94 | Val Top1: %60.52 | Val Top5: %87.13 | Gap: %-4.21 | LR: 0.165276
+    Epoch Val -> Top1: %60.52 (Best: %61.33) | Top5: %87.13
+64     | 100    | 2.2388   | 56.54  % | 0.164015  | 1.1330    
+>>> Epoch 64 Ended. Duration: 14.49 sec
+>>> Epoch 64 Summary | Train Top1: %56.05 | Train Top5: %81.98 | Val Top1: %60.32 | Val Top5: %85.96 | Gap: %-4.27 | LR: 0.164015
+    Epoch Val -> Top1: %60.32 (Best: %61.33) | Top5: %85.96
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 64...
+65     | 100    | 2.2300   | 57.12  % | 0.162736  | 1.1267    
+>>> Epoch 65 Ended. Duration: 14.44 sec
+>>> Epoch 65 Summary | Train Top1: %56.59 | Train Top5: %81.90 | Val Top1: %60.64 | Val Top5: %87.34 | Gap: %-4.05 | LR: 0.162736
+    Epoch Val -> Top1: %60.64 (Best: %61.33) | Top5: %87.34
+66     | 100    | 2.2349   | 56.59  % | 0.161441  | 1.1488    
+>>> Epoch 66 Ended. Duration: 14.49 sec
+>>> Epoch 66 Summary | Train Top1: %56.28 | Train Top5: %82.01 | Val Top1: %60.02 | Val Top5: %86.50 | Gap: %-3.74 | LR: 0.161441
+    Epoch Val -> Top1: %60.02 (Best: %61.33) | Top5: %86.50
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 66...
+67     | 100    | 2.2265   | 56.73  % | 0.160128  | 1.1093    
+>>> Epoch 67 Ended. Duration: 14.48 sec
+>>> Epoch 67 Summary | Train Top1: %56.33 | Train Top5: %81.98 | Val Top1: %59.12 | Val Top5: %84.89 | Gap: %-2.79 | LR: 0.160128
+    Epoch Val -> Top1: %59.12 (Best: %61.33) | Top5: %84.89
+68     | 100    | 2.2014   | 57.78  % | 0.158799  | 1.1609    
+>>> Epoch 68 Ended. Duration: 14.48 sec
+>>> Epoch 68 Summary | Train Top1: %56.97 | Train Top5: %82.42 | Val Top1: %56.45 | Val Top5: %83.67 | Gap: %0.52 | LR: 0.158799
+    Epoch Val -> Top1: %56.45 (Best: %61.33) | Top5: %83.67
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 68...
+69     | 100    | 2.2108   | 57.92  % | 0.157454  | 1.1369    
+>>> Epoch 69 Ended. Duration: 14.49 sec
+>>> Epoch 69 Summary | Train Top1: %57.23 | Train Top5: %82.31 | Val Top1: %62.81 | Val Top5: %88.37 | Gap: %-5.58 | LR: 0.157454
+--> NEW RECORD! (Top1: %62.81 | Top5: %88.37) Saving...
+70     | 100    | 2.2083   | 57.49  % | 0.156093  | 1.1038    
+>>> Epoch 70 Ended. Duration: 14.37 sec
+>>> Epoch 70 Summary | Train Top1: %57.14 | Train Top5: %82.54 | Val Top1: %60.54 | Val Top5: %86.56 | Gap: %-3.40 | LR: 0.156093
+    Epoch Val -> Top1: %60.54 (Best: %62.81) | Top5: %86.56
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 70...
+71     | 100    | 2.2118   | 57.47  % | 0.154717  | 1.1783    
+>>> Epoch 71 Ended. Duration: 14.51 sec
+>>> Epoch 71 Summary | Train Top1: %57.14 | Train Top5: %82.53 | Val Top1: %60.66 | Val Top5: %86.84 | Gap: %-3.52 | LR: 0.154717
+    Epoch Val -> Top1: %60.66 (Best: %62.81) | Top5: %86.84
+72     | 100    | 2.1936   | 58.27  % | 0.153327  | 1.2130    
+>>> Epoch 72 Ended. Duration: 14.37 sec
+>>> Epoch 72 Summary | Train Top1: %57.93 | Train Top5: %82.85 | Val Top1: %62.24 | Val Top5: %87.77 | Gap: %-4.31 | LR: 0.153327
+    Epoch Val -> Top1: %62.24 (Best: %62.81) | Top5: %87.77
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 72...
+73     | 100    | 2.1851   | 58.43  % | 0.151921  | 1.1114    
+>>> Epoch 73 Ended. Duration: 14.39 sec
+>>> Epoch 73 Summary | Train Top1: %57.63 | Train Top5: %82.73 | Val Top1: %61.98 | Val Top5: %88.23 | Gap: %-4.35 | LR: 0.151921
+    Epoch Val -> Top1: %61.98 (Best: %62.81) | Top5: %88.23
+74     | 100    | 2.1781   | 58.50  % | 0.150501  | 1.2179    
+>>> Epoch 74 Ended. Duration: 14.44 sec
+>>> Epoch 74 Summary | Train Top1: %57.73 | Train Top5: %82.77 | Val Top1: %64.64 | Val Top5: %88.89 | Gap: %-6.91 | LR: 0.150501
+--> NEW RECORD! (Top1: %64.64 | Top5: %88.89) Saving...
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 74...
+75     | 100    | 2.1742   | 58.63  % | 0.149068  | 1.1377    
+>>> Epoch 75 Ended. Duration: 14.46 sec
+>>> Epoch 75 Summary | Train Top1: %57.91 | Train Top5: %83.01 | Val Top1: %58.49 | Val Top5: %85.87 | Gap: %-0.58 | LR: 0.149068
+    Epoch Val -> Top1: %58.49 (Best: %64.64) | Top5: %85.87
+76     | 100    | 2.1623   | 58.90  % | 0.147621  | 1.1853    
+>>> Epoch 76 Ended. Duration: 14.40 sec
+>>> Epoch 76 Summary | Train Top1: %57.89 | Train Top5: %83.08 | Val Top1: %64.36 | Val Top5: %88.95 | Gap: %-6.47 | LR: 0.147621
+    Epoch Val -> Top1: %64.36 (Best: %64.64) | Top5: %88.95
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 76...
+77     | 100    | 2.1636   | 58.80  % | 0.146161  | 1.1292    
+>>> Epoch 77 Ended. Duration: 14.49 sec
+>>> Epoch 77 Summary | Train Top1: %58.40 | Train Top5: %83.37 | Val Top1: %60.98 | Val Top5: %86.45 | Gap: %-2.58 | LR: 0.146161
+    Epoch Val -> Top1: %60.98 (Best: %64.64) | Top5: %86.45
+78     | 100    | 2.1734   | 58.43  % | 0.144689  | 1.2429    
+>>> Epoch 78 Ended. Duration: 14.49 sec
+>>> Epoch 78 Summary | Train Top1: %58.02 | Train Top5: %83.08 | Val Top1: %58.99 | Val Top5: %85.16 | Gap: %-0.97 | LR: 0.144689
+    Epoch Val -> Top1: %58.99 (Best: %64.64) | Top5: %85.16
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 78...
+79     | 100    | 2.1648   | 59.17  % | 0.143204  | 1.1840    
+>>> Epoch 79 Ended. Duration: 14.49 sec
+>>> Epoch 79 Summary | Train Top1: %58.63 | Train Top5: %83.39 | Val Top1: %61.23 | Val Top5: %87.18 | Gap: %-2.60 | LR: 0.143204
+    Epoch Val -> Top1: %61.23 (Best: %64.64) | Top5: %87.18
+80     | 100    | 2.1612   | 59.10  % | 0.141707  | 1.2167    
+>>> Epoch 80 Ended. Duration: 14.48 sec
+>>> Epoch 80 Summary | Train Top1: %58.52 | Train Top5: %83.57 | Val Top1: %61.44 | Val Top5: %87.14 | Gap: %-2.92 | LR: 0.141707
+    Epoch Val -> Top1: %61.44 (Best: %64.64) | Top5: %87.14
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 80...
+81     | 100    | 2.1437   | 59.29  % | 0.140199  | 1.1620    
+>>> Epoch 81 Ended. Duration: 14.38 sec
+>>> Epoch 81 Summary | Train Top1: %58.62 | Train Top5: %83.67 | Val Top1: %60.84 | Val Top5: %87.19 | Gap: %-2.22 | LR: 0.140199
+    Epoch Val -> Top1: %60.84 (Best: %64.64) | Top5: %87.19
+82     | 100    | 2.1373   | 59.81  % | 0.138681  | 1.2298    
+>>> Epoch 82 Ended. Duration: 14.45 sec
+>>> Epoch 82 Summary | Train Top1: %59.18 | Train Top5: %83.69 | Val Top1: %61.61 | Val Top5: %87.34 | Gap: %-2.43 | LR: 0.138681
+    Epoch Val -> Top1: %61.61 (Best: %64.64) | Top5: %87.34
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 82...
+83     | 100    | 2.1350   | 59.64  % | 0.137151  | 1.1961    
+>>> Epoch 83 Ended. Duration: 14.50 sec
+>>> Epoch 83 Summary | Train Top1: %58.94 | Train Top5: %83.79 | Val Top1: %62.31 | Val Top5: %86.76 | Gap: %-3.37 | LR: 0.137151
+    Epoch Val -> Top1: %62.31 (Best: %64.64) | Top5: %86.76
+84     | 100    | 2.1510   | 59.20  % | 0.135612  | 1.1961    
+>>> Epoch 84 Ended. Duration: 14.42 sec
+>>> Epoch 84 Summary | Train Top1: %58.91 | Train Top5: %83.56 | Val Top1: %62.14 | Val Top5: %87.31 | Gap: %-3.23 | LR: 0.135612
+    Epoch Val -> Top1: %62.14 (Best: %64.64) | Top5: %87.31
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 84...
+85     | 100    | 2.1369   | 59.73  % | 0.134062  | 1.2280    
+>>> Epoch 85 Ended. Duration: 14.40 sec
+>>> Epoch 85 Summary | Train Top1: %59.35 | Train Top5: %83.70 | Val Top1: %62.29 | Val Top5: %87.38 | Gap: %-2.94 | LR: 0.134062
+    Epoch Val -> Top1: %62.29 (Best: %64.64) | Top5: %87.38
+86     | 100    | 2.1222   | 60.09  % | 0.132504  | 1.1498    
+>>> Epoch 86 Ended. Duration: 14.46 sec
+>>> Epoch 86 Summary | Train Top1: %59.45 | Train Top5: %84.11 | Val Top1: %62.42 | Val Top5: %88.00 | Gap: %-2.97 | LR: 0.132504
+    Epoch Val -> Top1: %62.42 (Best: %64.64) | Top5: %88.00
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 86...
+87     | 100    | 2.1115   | 60.70  % | 0.130936  | 1.1667    
+>>> Epoch 87 Ended. Duration: 14.39 sec
+>>> Epoch 87 Summary | Train Top1: %59.84 | Train Top5: %84.37 | Val Top1: %63.24 | Val Top5: %88.64 | Gap: %-3.40 | LR: 0.130936
+    Epoch Val -> Top1: %63.24 (Best: %64.64) | Top5: %88.64
+88     | 100    | 2.1335   | 59.92  % | 0.129360  | 1.2436    
+>>> Epoch 88 Ended. Duration: 14.50 sec
+>>> Epoch 88 Summary | Train Top1: %59.71 | Train Top5: %84.07 | Val Top1: %65.37 | Val Top5: %89.28 | Gap: %-5.66 | LR: 0.129360
+--> NEW RECORD! (Top1: %65.37 | Top5: %89.28) Saving...
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 88...
+89     | 100    | 2.1105   | 60.05  % | 0.127776  | 1.3882    
+>>> Epoch 89 Ended. Duration: 14.49 sec
+>>> Epoch 89 Summary | Train Top1: %59.89 | Train Top5: %84.52 | Val Top1: %65.77 | Val Top5: %89.73 | Gap: %-5.88 | LR: 0.127776
+--> NEW RECORD! (Top1: %65.77 | Top5: %89.73) Saving...
+90     | 100    | 2.1028   | 60.47  % | 0.126185  | 1.2382    
+>>> Epoch 90 Ended. Duration: 14.45 sec
+>>> Epoch 90 Summary | Train Top1: %59.89 | Train Top5: %84.30 | Val Top1: %61.55 | Val Top5: %86.50 | Gap: %-1.66 | LR: 0.126185
+    Epoch Val -> Top1: %61.55 (Best: %65.77) | Top5: %86.50
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 90...
+91     | 100    | 2.1026   | 60.72  % | 0.124586  | 1.2157    
+>>> Epoch 91 Ended. Duration: 14.54 sec
+>>> Epoch 91 Summary | Train Top1: %60.35 | Train Top5: %84.40 | Val Top1: %64.28 | Val Top5: %88.73 | Gap: %-3.93 | LR: 0.124586
+    Epoch Val -> Top1: %64.28 (Best: %65.77) | Top5: %88.73
+92     | 100    | 2.0879   | 61.45  % | 0.122981  | 1.1896    
+>>> Epoch 92 Ended. Duration: 14.52 sec
+>>> Epoch 92 Summary | Train Top1: %60.55 | Train Top5: %84.68 | Val Top1: %62.50 | Val Top5: %86.51 | Gap: %-1.95 | LR: 0.122981
+    Epoch Val -> Top1: %62.50 (Best: %65.77) | Top5: %86.51
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 92...
+93     | 100    | 2.0911   | 61.21  % | 0.121369  | 1.2617    
+>>> Epoch 93 Ended. Duration: 14.51 sec
+>>> Epoch 93 Summary | Train Top1: %60.68 | Train Top5: %84.58 | Val Top1: %63.79 | Val Top5: %88.30 | Gap: %-3.11 | LR: 0.121369
+    Epoch Val -> Top1: %63.79 (Best: %65.77) | Top5: %88.30
+94     | 100    | 2.0921   | 61.22  % | 0.119752  | 1.3429    
+>>> Epoch 94 Ended. Duration: 14.51 sec
+>>> Epoch 94 Summary | Train Top1: %60.55 | Train Top5: %84.61 | Val Top1: %64.63 | Val Top5: %88.13 | Gap: %-4.08 | LR: 0.119752
+    Epoch Val -> Top1: %64.63 (Best: %65.77) | Top5: %88.13
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 94...
+95     | 100    | 2.0869   | 60.76  % | 0.118129  | 1.2500    
+>>> Epoch 95 Ended. Duration: 14.47 sec
+>>> Epoch 95 Summary | Train Top1: %60.77 | Train Top5: %84.75 | Val Top1: %62.40 | Val Top5: %86.86 | Gap: %-1.63 | LR: 0.118129
+    Epoch Val -> Top1: %62.40 (Best: %65.77) | Top5: %86.86
+96     | 100    | 2.0842   | 61.43  % | 0.116501  | 1.1936    
+>>> Epoch 96 Ended. Duration: 14.51 sec
+>>> Epoch 96 Summary | Train Top1: %61.11 | Train Top5: %84.89 | Val Top1: %64.42 | Val Top5: %88.85 | Gap: %-3.31 | LR: 0.116501
+    Epoch Val -> Top1: %64.42 (Best: %65.77) | Top5: %88.85
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 96...
+97     | 100    | 2.0708   | 61.82  % | 0.114869  | 1.3483    
+>>> Epoch 97 Ended. Duration: 14.45 sec
+>>> Epoch 97 Summary | Train Top1: %61.07 | Train Top5: %84.93 | Val Top1: %65.36 | Val Top5: %89.77 | Gap: %-4.29 | LR: 0.114869
+    Epoch Val -> Top1: %65.36 (Best: %65.77) | Top5: %89.77
+98     | 100    | 2.0660   | 62.03  % | 0.113233  | 1.3376    
+>>> Epoch 98 Ended. Duration: 14.37 sec
+>>> Epoch 98 Summary | Train Top1: %61.56 | Train Top5: %85.28 | Val Top1: %63.93 | Val Top5: %88.07 | Gap: %-2.37 | LR: 0.113233
+    Epoch Val -> Top1: %63.93 (Best: %65.77) | Top5: %88.07
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 98...
+99     | 100    | 2.0641   | 61.84  % | 0.111593  | 1.2570    
+>>> Epoch 99 Ended. Duration: 14.49 sec
+>>> Epoch 99 Summary | Train Top1: %61.30 | Train Top5: %85.06 | Val Top1: %61.89 | Val Top5: %87.23 | Gap: %-0.59 | LR: 0.111593
+    Epoch Val -> Top1: %61.89 (Best: %65.77) | Top5: %87.23
+100    | 100    | 2.0716   | 61.53  % | 0.109950  | 1.2314    
+>>> Epoch 100 Ended. Duration: 14.41 sec
+>>> Epoch 100 Summary | Train Top1: %61.56 | Train Top5: %85.22 | Val Top1: %64.08 | Val Top5: %88.58 | Gap: %-2.52 | LR: 0.109950
+    Epoch Val -> Top1: %64.08 (Best: %65.77) | Top5: %88.58
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 100...
+101    | 100    | 2.0425   | 62.46  % | 0.108304  | 1.2058    
+>>> Epoch 101 Ended. Duration: 14.40 sec
+>>> Epoch 101 Summary | Train Top1: %62.00 | Train Top5: %85.45 | Val Top1: %64.42 | Val Top5: %88.49 | Gap: %-2.42 | LR: 0.108304
+    Epoch Val -> Top1: %64.42 (Best: %65.77) | Top5: %88.49
+102    | 100    | 2.0416   | 62.41  % | 0.106656  | 1.3009    
+>>> Epoch 102 Ended. Duration: 14.51 sec
+>>> Epoch 102 Summary | Train Top1: %61.50 | Train Top5: %85.37 | Val Top1: %65.05 | Val Top5: %88.85 | Gap: %-3.55 | LR: 0.106656
+    Epoch Val -> Top1: %65.05 (Best: %65.77) | Top5: %88.85
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 102...
+103    | 100    | 2.0458   | 62.68  % | 0.105006  | 1.2707    
+>>> Epoch 103 Ended. Duration: 14.48 sec
+>>> Epoch 103 Summary | Train Top1: %61.96 | Train Top5: %85.42 | Val Top1: %59.76 | Val Top5: %86.04 | Gap: %2.20 | LR: 0.105006
+    Epoch Val -> Top1: %59.76 (Best: %65.77) | Top5: %86.04
+104    | 100    | 2.0471   | 62.21  % | 0.103355  | 1.1835    
+>>> Epoch 104 Ended. Duration: 14.38 sec
+>>> Epoch 104 Summary | Train Top1: %61.95 | Train Top5: %85.59 | Val Top1: %65.64 | Val Top5: %89.29 | Gap: %-3.69 | LR: 0.103355
+    Epoch Val -> Top1: %65.64 (Best: %65.77) | Top5: %89.29
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 104...
+105    | 100    | 2.0222   | 63.20  % | 0.101703  | 1.3524    
+>>> Epoch 105 Ended. Duration: 14.46 sec
+>>> Epoch 105 Summary | Train Top1: %62.37 | Train Top5: %85.85 | Val Top1: %62.56 | Val Top5: %87.42 | Gap: %-0.19 | LR: 0.101703
+    Epoch Val -> Top1: %62.56 (Best: %65.77) | Top5: %87.42
+106    | 100    | 2.0354   | 62.60  % | 0.100050  | 1.3877    
+>>> Epoch 106 Ended. Duration: 14.40 sec
+>>> Epoch 106 Summary | Train Top1: %62.54 | Train Top5: %85.80 | Val Top1: %65.03 | Val Top5: %89.22 | Gap: %-2.49 | LR: 0.100050
+    Epoch Val -> Top1: %65.03 (Best: %65.77) | Top5: %89.22
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 106...
+107    | 100    | 2.0140   | 63.36  % | 0.098397  | 1.2900    
+>>> Epoch 107 Ended. Duration: 14.49 sec
+>>> Epoch 107 Summary | Train Top1: %63.10 | Train Top5: %86.16 | Val Top1: %66.51 | Val Top5: %89.23 | Gap: %-3.41 | LR: 0.098397
+--> NEW RECORD! (Top1: %66.51 | Top5: %89.23) Saving...
+108    | 100    | 2.0082   | 64.00  % | 0.096745  | 1.3653    
+>>> Epoch 108 Ended. Duration: 14.43 sec
+>>> Epoch 108 Summary | Train Top1: %63.31 | Train Top5: %86.12 | Val Top1: %66.69 | Val Top5: %88.91 | Gap: %-3.38 | LR: 0.096745
+--> NEW RECORD! (Top1: %66.69 | Top5: %88.91) Saving...
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 108...
+109    | 100    | 2.0028   | 63.80  % | 0.095094  | 1.3117    
+>>> Epoch 109 Ended. Duration: 14.48 sec
+>>> Epoch 109 Summary | Train Top1: %63.23 | Train Top5: %86.39 | Val Top1: %66.31 | Val Top5: %89.54 | Gap: %-3.08 | LR: 0.095094
+    Epoch Val -> Top1: %66.31 (Best: %66.69) | Top5: %89.54
+110    | 100    | 1.9886   | 64.28  % | 0.093444  | 1.3558    
+>>> Epoch 110 Ended. Duration: 14.45 sec
+>>> Epoch 110 Summary | Train Top1: %63.50 | Train Top5: %86.36 | Val Top1: %68.12 | Val Top5: %90.73 | Gap: %-4.62 | LR: 0.093444
+--> NEW RECORD! (Top1: %68.12 | Top5: %90.73) Saving...
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 110...
+111    | 100    | 2.0017   | 63.86  % | 0.091796  | 1.3323    
+>>> Epoch 111 Ended. Duration: 14.40 sec
+>>> Epoch 111 Summary | Train Top1: %63.62 | Train Top5: %86.37 | Val Top1: %66.77 | Val Top5: %90.02 | Gap: %-3.15 | LR: 0.091796
+    Epoch Val -> Top1: %66.77 (Best: %68.12) | Top5: %90.02
+112    | 100    | 1.9923   | 64.07  % | 0.090150  | 1.1720    
+>>> Epoch 112 Ended. Duration: 14.48 sec
+>>> Epoch 112 Summary | Train Top1: %63.81 | Train Top5: %86.51 | Val Top1: %67.80 | Val Top5: %90.58 | Gap: %-3.99 | LR: 0.090150
+    Epoch Val -> Top1: %67.80 (Best: %68.12) | Top5: %90.58
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 112...
+113    | 100    | 1.9793   | 64.50  % | 0.088507  | 1.3282    
+>>> Epoch 113 Ended. Duration: 14.40 sec
+>>> Epoch 113 Summary | Train Top1: %64.01 | Train Top5: %86.72 | Val Top1: %67.15 | Val Top5: %90.25 | Gap: %-3.14 | LR: 0.088507
+    Epoch Val -> Top1: %67.15 (Best: %68.12) | Top5: %90.25
+114    | 100    | 1.9930   | 63.95  % | 0.086867  | 1.3940    
+>>> Epoch 114 Ended. Duration: 14.41 sec
+>>> Epoch 114 Summary | Train Top1: %63.74 | Train Top5: %86.71 | Val Top1: %66.90 | Val Top5: %90.12 | Gap: %-3.16 | LR: 0.086867
+    Epoch Val -> Top1: %66.90 (Best: %68.12) | Top5: %90.12
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 114...
+115    | 100    | 1.9883   | 64.13  % | 0.085231  | 1.3237    
+>>> Epoch 115 Ended. Duration: 14.45 sec
+>>> Epoch 115 Summary | Train Top1: %64.07 | Train Top5: %86.69 | Val Top1: %66.14 | Val Top5: %89.34 | Gap: %-2.07 | LR: 0.085231
+    Epoch Val -> Top1: %66.14 (Best: %68.12) | Top5: %89.34
+116    | 100    | 1.9651   | 64.95  % | 0.083599  | 1.3316    
+>>> Epoch 116 Ended. Duration: 14.47 sec
+>>> Epoch 116 Summary | Train Top1: %64.43 | Train Top5: %87.02 | Val Top1: %67.81 | Val Top5: %90.15 | Gap: %-3.38 | LR: 0.083599
+    Epoch Val -> Top1: %67.81 (Best: %68.12) | Top5: %90.15
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 116...
+117    | 100    | 1.9685   | 64.83  % | 0.081971  | 1.3201    
+>>> Epoch 117 Ended. Duration: 14.40 sec
+>>> Epoch 117 Summary | Train Top1: %64.33 | Train Top5: %86.94 | Val Top1: %67.01 | Val Top5: %89.89 | Gap: %-2.68 | LR: 0.081971
+    Epoch Val -> Top1: %67.01 (Best: %68.12) | Top5: %89.89
+118    | 100    | 1.9526   | 65.37  % | 0.080348  | 1.3379    
+>>> Epoch 118 Ended. Duration: 14.44 sec
+>>> Epoch 118 Summary | Train Top1: %64.73 | Train Top5: %87.28 | Val Top1: %65.67 | Val Top5: %88.88 | Gap: %-0.94 | LR: 0.080348
+    Epoch Val -> Top1: %65.67 (Best: %68.12) | Top5: %88.88
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 118...
+119    | 100    | 1.9546   | 65.27  % | 0.078731  | 1.2660    
+>>> Epoch 119 Ended. Duration: 14.50 sec
+>>> Epoch 119 Summary | Train Top1: %65.01 | Train Top5: %87.13 | Val Top1: %66.15 | Val Top5: %90.11 | Gap: %-1.14 | LR: 0.078731
+    Epoch Val -> Top1: %66.15 (Best: %68.12) | Top5: %90.11
+120    | 100    | 1.9429   | 65.60  % | 0.077119  | 1.3660    
+>>> Epoch 120 Ended. Duration: 14.47 sec
+>>> Epoch 120 Summary | Train Top1: %64.98 | Train Top5: %87.27 | Val Top1: %67.49 | Val Top5: %89.90 | Gap: %-2.51 | LR: 0.077119
+    Epoch Val -> Top1: %67.49 (Best: %68.12) | Top5: %89.90
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 120...
+121    | 100    | 1.9286   | 66.27  % | 0.075514  | 1.3822    
+>>> Epoch 121 Ended. Duration: 14.50 sec
+>>> Epoch 121 Summary | Train Top1: %65.51 | Train Top5: %87.47 | Val Top1: %68.62 | Val Top5: %91.19 | Gap: %-3.11 | LR: 0.075514
+--> NEW RECORD! (Top1: %68.62 | Top5: %91.19) Saving...
+122    | 100    | 1.9377   | 66.08  % | 0.073915  | 1.3785    
+>>> Epoch 122 Ended. Duration: 14.40 sec
+>>> Epoch 122 Summary | Train Top1: %65.77 | Train Top5: %87.48 | Val Top1: %67.36 | Val Top5: %90.22 | Gap: %-1.59 | LR: 0.073915
+    Epoch Val -> Top1: %67.36 (Best: %68.62) | Top5: %90.22
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 122...
+123    | 100    | 1.9297   | 66.09  % | 0.072324  | 1.3835    
+>>> Epoch 123 Ended. Duration: 14.46 sec
+>>> Epoch 123 Summary | Train Top1: %65.73 | Train Top5: %87.85 | Val Top1: %70.38 | Val Top5: %91.89 | Gap: %-4.65 | LR: 0.072324
+--> NEW RECORD! (Top1: %70.38 | Top5: %91.89) Saving...
+124    | 100    | 1.9185   | 66.39  % | 0.070740  | 1.5785    
+>>> Epoch 124 Ended. Duration: 14.49 sec
+>>> Epoch 124 Summary | Train Top1: %66.01 | Train Top5: %87.73 | Val Top1: %70.52 | Val Top5: %91.42 | Gap: %-4.51 | LR: 0.070740
+--> NEW RECORD! (Top1: %70.52 | Top5: %91.42) Saving...
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 124...
+125    | 100    | 1.9111   | 66.49  % | 0.069164  | 1.4529    
+>>> Epoch 125 Ended. Duration: 14.46 sec
+>>> Epoch 125 Summary | Train Top1: %66.16 | Train Top5: %87.93 | Val Top1: %67.12 | Val Top5: %89.61 | Gap: %-0.96 | LR: 0.069164
+    Epoch Val -> Top1: %67.12 (Best: %70.52) | Top5: %89.61
+126    | 100    | 1.9121   | 66.85  % | 0.067596  | 1.3208    
+>>> Epoch 126 Ended. Duration: 14.49 sec
+>>> Epoch 126 Summary | Train Top1: %66.31 | Train Top5: %87.90 | Val Top1: %67.01 | Val Top5: %89.23 | Gap: %-0.70 | LR: 0.067596
+    Epoch Val -> Top1: %67.01 (Best: %70.52) | Top5: %89.23
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 126...
+127    | 100    | 1.9235   | 66.03  % | 0.066038  | 1.4144    
+>>> Epoch 127 Ended. Duration: 14.45 sec
+>>> Epoch 127 Summary | Train Top1: %66.26 | Train Top5: %87.92 | Val Top1: %67.47 | Val Top5: %89.56 | Gap: %-1.21 | LR: 0.066038
+    Epoch Val -> Top1: %67.47 (Best: %70.52) | Top5: %89.56
+128    | 100    | 1.8947   | 67.05  % | 0.064488  | 1.5083    
+>>> Epoch 128 Ended. Duration: 14.42 sec
+>>> Epoch 128 Summary | Train Top1: %66.75 | Train Top5: %88.25 | Val Top1: %68.93 | Val Top5: %91.18 | Gap: %-2.18 | LR: 0.064488
+    Epoch Val -> Top1: %68.93 (Best: %70.52) | Top5: %91.18
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 128...
+129    | 100    | 1.8901   | 67.37  % | 0.062949  | 1.3938    
+>>> Epoch 129 Ended. Duration: 14.49 sec
+>>> Epoch 129 Summary | Train Top1: %66.98 | Train Top5: %88.02 | Val Top1: %70.23 | Val Top5: %91.21 | Gap: %-3.25 | LR: 0.062949
+    Epoch Val -> Top1: %70.23 (Best: %70.52) | Top5: %91.21
+130    | 100    | 1.8935   | 67.41  % | 0.061419  | 1.4369    
+>>> Epoch 130 Ended. Duration: 14.49 sec
+>>> Epoch 130 Summary | Train Top1: %67.07 | Train Top5: %88.21 | Val Top1: %68.77 | Val Top5: %90.83 | Gap: %-1.70 | LR: 0.061419
+    Epoch Val -> Top1: %68.77 (Best: %70.52) | Top5: %90.83
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 130...
+131    | 100    | 1.8864   | 67.74  % | 0.059901  | 1.5948    
+>>> Epoch 131 Ended. Duration: 14.46 sec
+>>> Epoch 131 Summary | Train Top1: %67.43 | Train Top5: %88.37 | Val Top1: %68.65 | Val Top5: %90.36 | Gap: %-1.22 | LR: 0.059901
+    Epoch Val -> Top1: %68.65 (Best: %70.52) | Top5: %90.36
+132    | 100    | 1.8736   | 68.09  % | 0.058393  | 1.4549    
+>>> Epoch 132 Ended. Duration: 14.40 sec
+>>> Epoch 132 Summary | Train Top1: %67.58 | Train Top5: %88.53 | Val Top1: %69.71 | Val Top5: %91.16 | Gap: %-2.13 | LR: 0.058393
+    Epoch Val -> Top1: %69.71 (Best: %70.52) | Top5: %91.16
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 132...
+133    | 100    | 1.8593   | 68.56  % | 0.056896  | 1.3788    
+>>> Epoch 133 Ended. Duration: 14.43 sec
+>>> Epoch 133 Summary | Train Top1: %68.07 | Train Top5: %88.69 | Val Top1: %69.52 | Val Top5: %91.42 | Gap: %-1.45 | LR: 0.056896
+    Epoch Val -> Top1: %69.52 (Best: %70.52) | Top5: %91.42
+134    | 100    | 1.8687   | 68.14  % | 0.055411  | 1.5095    
+>>> Epoch 134 Ended. Duration: 14.49 sec
+>>> Epoch 134 Summary | Train Top1: %67.53 | Train Top5: %88.40 | Val Top1: %69.86 | Val Top5: %90.73 | Gap: %-2.33 | LR: 0.055411
+    Epoch Val -> Top1: %69.86 (Best: %70.52) | Top5: %90.73
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 134...
+135    | 100    | 1.8497   | 68.83  % | 0.053939  | 1.5090    
+>>> Epoch 135 Ended. Duration: 14.49 sec
+>>> Epoch 135 Summary | Train Top1: %68.26 | Train Top5: %88.64 | Val Top1: %71.29 | Val Top5: %91.93 | Gap: %-3.03 | LR: 0.053939
+--> NEW RECORD! (Top1: %71.29 | Top5: %91.93) Saving...
+136    | 100    | 1.8509   | 68.88  % | 0.052479  | 1.4117    
+>>> Epoch 136 Ended. Duration: 14.41 sec
+>>> Epoch 136 Summary | Train Top1: %68.65 | Train Top5: %89.04 | Val Top1: %71.10 | Val Top5: %91.98 | Gap: %-2.45 | LR: 0.052479
+    Epoch Val -> Top1: %71.10 (Best: %71.29) | Top5: %91.98
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 136...
+137    | 100    | 1.8392   | 69.28  % | 0.051032  | 1.4102    
+>>> Epoch 137 Ended. Duration: 14.50 sec
+>>> Epoch 137 Summary | Train Top1: %68.76 | Train Top5: %89.04 | Val Top1: %69.21 | Val Top5: %90.86 | Gap: %-0.45 | LR: 0.051032
+    Epoch Val -> Top1: %69.21 (Best: %71.29) | Top5: %90.86
+138    | 100    | 1.8298   | 69.37  % | 0.049599  | 1.5150    
+>>> Epoch 138 Ended. Duration: 14.48 sec
+>>> Epoch 138 Summary | Train Top1: %68.91 | Train Top5: %89.19 | Val Top1: %68.56 | Val Top5: %90.83 | Gap: %0.35 | LR: 0.049599
+    Epoch Val -> Top1: %68.56 (Best: %71.29) | Top5: %90.83
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 138...
+139    | 100    | 1.8339   | 69.27  % | 0.048179  | 1.6619    
+>>> Epoch 139 Ended. Duration: 14.42 sec
+>>> Epoch 139 Summary | Train Top1: %68.92 | Train Top5: %89.08 | Val Top1: %69.02 | Val Top5: %91.35 | Gap: %-0.10 | LR: 0.048179
+    Epoch Val -> Top1: %69.02 (Best: %71.29) | Top5: %91.35
+140    | 100    | 1.8284   | 69.40  % | 0.046773  | 1.5366    
+>>> Epoch 140 Ended. Duration: 14.46 sec
+>>> Epoch 140 Summary | Train Top1: %69.28 | Train Top5: %89.51 | Val Top1: %69.55 | Val Top5: %91.30 | Gap: %-0.27 | LR: 0.046773
+    Epoch Val -> Top1: %69.55 (Best: %71.29) | Top5: %91.30
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 140...
+141    | 100    | 1.8076   | 70.41  % | 0.045383  | 1.5467    
+>>> Epoch 141 Ended. Duration: 14.41 sec
+>>> Epoch 141 Summary | Train Top1: %69.55 | Train Top5: %89.39 | Val Top1: %72.96 | Val Top5: %92.94 | Gap: %-3.41 | LR: 0.045383
+--> NEW RECORD! (Top1: %72.96 | Top5: %92.94) Saving...
+142    | 100    | 1.8150   | 70.02  % | 0.044007  | 1.4308    
+>>> Epoch 142 Ended. Duration: 14.47 sec
+>>> Epoch 142 Summary | Train Top1: %69.72 | Train Top5: %89.39 | Val Top1: %71.74 | Val Top5: %92.11 | Gap: %-2.02 | LR: 0.044007
+    Epoch Val -> Top1: %71.74 (Best: %72.96) | Top5: %92.11
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 142...
+143    | 100    | 1.8049   | 70.39  % | 0.042646  | 1.6126    
+>>> Epoch 143 Ended. Duration: 14.42 sec
+>>> Epoch 143 Summary | Train Top1: %69.88 | Train Top5: %89.47 | Val Top1: %72.07 | Val Top5: %92.74 | Gap: %-2.19 | LR: 0.042646
+    Epoch Val -> Top1: %72.07 (Best: %72.96) | Top5: %92.74
+144    | 100    | 1.8066   | 70.37  % | 0.041301  | 1.6718    
+>>> Epoch 144 Ended. Duration: 14.40 sec
+>>> Epoch 144 Summary | Train Top1: %70.19 | Train Top5: %89.68 | Val Top1: %71.87 | Val Top5: %92.53 | Gap: %-1.68 | LR: 0.041301
+    Epoch Val -> Top1: %71.87 (Best: %72.96) | Top5: %92.53
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 144...
+145    | 100    | 1.7860   | 71.05  % | 0.039972  | 1.7338    
+>>> Epoch 145 Ended. Duration: 14.43 sec
+>>> Epoch 145 Summary | Train Top1: %70.46 | Train Top5: %89.64 | Val Top1: %72.33 | Val Top5: %92.38 | Gap: %-1.87 | LR: 0.039972
+    Epoch Val -> Top1: %72.33 (Best: %72.96) | Top5: %92.38
+146    | 100    | 1.7880   | 71.17  % | 0.038659  | 1.4752    
+>>> Epoch 146 Ended. Duration: 14.47 sec
+>>> Epoch 146 Summary | Train Top1: %70.83 | Train Top5: %89.86 | Val Top1: %73.42 | Val Top5: %92.88 | Gap: %-2.59 | LR: 0.038659
+--> NEW RECORD! (Top1: %73.42 | Top5: %92.88) Saving...
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 146...
+147    | 100    | 1.7805   | 71.25  % | 0.037364  | 1.5342    
+>>> Epoch 147 Ended. Duration: 14.52 sec
+>>> Epoch 147 Summary | Train Top1: %70.73 | Train Top5: %89.96 | Val Top1: %71.45 | Val Top5: %91.86 | Gap: %-0.72 | LR: 0.037364
+    Epoch Val -> Top1: %71.45 (Best: %73.42) | Top5: %91.86
+148    | 100    | 1.7826   | 71.30  % | 0.036085  | 1.5157    
+>>> Epoch 148 Ended. Duration: 14.44 sec
+>>> Epoch 148 Summary | Train Top1: %71.05 | Train Top5: %90.25 | Val Top1: %72.95 | Val Top5: %92.59 | Gap: %-1.90 | LR: 0.036085
+    Epoch Val -> Top1: %72.95 (Best: %73.42) | Top5: %92.59
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 148...
+149    | 100    | 1.7615   | 71.82  % | 0.034824  | 1.5774    
+>>> Epoch 149 Ended. Duration: 14.53 sec
+>>> Epoch 149 Summary | Train Top1: %71.39 | Train Top5: %90.20 | Val Top1: %71.80 | Val Top5: %92.29 | Gap: %-0.41 | LR: 0.034824
+    Epoch Val -> Top1: %71.80 (Best: %73.42) | Top5: %92.29
+150    | 100    | 1.7588   | 72.08  % | 0.033581  | 1.6049    
+>>> Epoch 150 Ended. Duration: 14.47 sec
+>>> Epoch 150 Summary | Train Top1: %71.77 | Train Top5: %90.28 | Val Top1: %71.98 | Val Top5: %92.34 | Gap: %-0.21 | LR: 0.033581
+    Epoch Val -> Top1: %71.98 (Best: %73.42) | Top5: %92.34
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 150...
+151    | 100    | 1.7448   | 72.43  % | 0.032356  | 1.5333    
+>>> Epoch 151 Ended. Duration: 14.49 sec
+>>> Epoch 151 Summary | Train Top1: %72.03 | Train Top5: %90.53 | Val Top1: %72.11 | Val Top5: %91.92 | Gap: %-0.08 | LR: 0.032356
+    Epoch Val -> Top1: %72.11 (Best: %73.42) | Top5: %91.92
+152    | 100    | 1.7315   | 73.03  % | 0.031149  | 1.4521    
+>>> Epoch 152 Ended. Duration: 14.50 sec
+>>> Epoch 152 Summary | Train Top1: %72.25 | Train Top5: %90.71 | Val Top1: %72.98 | Val Top5: %92.52 | Gap: %-0.73 | LR: 0.031149
+    Epoch Val -> Top1: %72.98 (Best: %73.42) | Top5: %92.52
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 152...
+153    | 100    | 1.7429   | 72.55  % | 0.029961  | 1.6034    
+>>> Epoch 153 Ended. Duration: 14.51 sec
+>>> Epoch 153 Summary | Train Top1: %72.24 | Train Top5: %90.50 | Val Top1: %72.15 | Val Top5: %92.53 | Gap: %0.09 | LR: 0.029961
+    Epoch Val -> Top1: %72.15 (Best: %73.42) | Top5: %92.53
+154    | 100    | 1.7333   | 72.77  % | 0.028793  | 1.7419    
+>>> Epoch 154 Ended. Duration: 14.41 sec
+>>> Epoch 154 Summary | Train Top1: %72.59 | Train Top5: %90.79 | Val Top1: %72.63 | Val Top5: %92.09 | Gap: %-0.04 | LR: 0.028793
+    Epoch Val -> Top1: %72.63 (Best: %73.42) | Top5: %92.09
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 154...
+155    | 100    | 1.7233   | 73.16  % | 0.027644  | 1.5743    
+>>> Epoch 155 Ended. Duration: 14.50 sec
+>>> Epoch 155 Summary | Train Top1: %72.73 | Train Top5: %90.89 | Val Top1: %71.97 | Val Top5: %91.43 | Gap: %0.76 | LR: 0.027644
+    Epoch Val -> Top1: %71.97 (Best: %73.42) | Top5: %91.43
+156    | 100    | 1.7207   | 73.32  % | 0.026514  | 1.6878    
+>>> Epoch 156 Ended. Duration: 14.41 sec
+>>> Epoch 156 Summary | Train Top1: %72.85 | Train Top5: %91.06 | Val Top1: %73.50 | Val Top5: %92.71 | Gap: %-0.65 | LR: 0.026514
+--> NEW RECORD! (Top1: %73.50 | Top5: %92.71) Saving...
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 156...
+157    | 100    | 1.6997   | 73.92  % | 0.025405  | 1.5870    
+>>> Epoch 157 Ended. Duration: 14.51 sec
+>>> Epoch 157 Summary | Train Top1: %73.24 | Train Top5: %91.08 | Val Top1: %73.56 | Val Top5: %92.85 | Gap: %-0.32 | LR: 0.025405
+--> NEW RECORD! (Top1: %73.56 | Top5: %92.85) Saving...
+158    | 100    | 1.7043   | 74.00  % | 0.024316  | 1.7588    
+>>> Epoch 158 Ended. Duration: 14.36 sec
+>>> Epoch 158 Summary | Train Top1: %73.59 | Train Top5: %91.12 | Val Top1: %73.03 | Val Top5: %92.93 | Gap: %0.56 | LR: 0.024316
+    Epoch Val -> Top1: %73.03 (Best: %73.56) | Top5: %92.93
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 158...
+159    | 100    | 1.7003   | 73.82  % | 0.023248  | 1.7001    
+>>> Epoch 159 Ended. Duration: 14.49 sec
+>>> Epoch 159 Summary | Train Top1: %73.78 | Train Top5: %91.31 | Val Top1: %73.63 | Val Top5: %92.59 | Gap: %0.15 | LR: 0.023248
+--> NEW RECORD! (Top1: %73.63 | Top5: %92.59) Saving...
+160    | 100    | 1.6863   | 74.56  % | 0.022201  | 1.8408    
+>>> Epoch 160 Ended. Duration: 14.36 sec
+>>> Epoch 160 Summary | Train Top1: %74.18 | Train Top5: %91.52 | Val Top1: %73.96 | Val Top5: %93.36 | Gap: %0.22 | LR: 0.022201
+--> NEW RECORD! (Top1: %73.96 | Top5: %93.36) Saving...
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 160...
+161    | 100    | 1.6932   | 74.37  % | 0.021175  | 1.7328    
+>>> Epoch 161 Ended. Duration: 14.49 sec
+>>> Epoch 161 Summary | Train Top1: %74.26 | Train Top5: %91.44 | Val Top1: %74.01 | Val Top5: %92.83 | Gap: %0.25 | LR: 0.021175
+--> NEW RECORD! (Top1: %74.01 | Top5: %92.83) Saving...
+162    | 100    | 1.6924   | 74.25  % | 0.020171  | 1.8087    
+>>> Epoch 162 Ended. Duration: 14.48 sec
+>>> Epoch 162 Summary | Train Top1: %74.27 | Train Top5: %91.37 | Val Top1: %74.03 | Val Top5: %92.87 | Gap: %0.24 | LR: 0.020171
+--> NEW RECORD! (Top1: %74.03 | Top5: %92.87) Saving...
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 162...
+163    | 100    | 1.6788   | 75.07  % | 0.019189  | 1.7443    
+>>> Epoch 163 Ended. Duration: 14.50 sec
+>>> Epoch 163 Summary | Train Top1: %74.74 | Train Top5: %91.65 | Val Top1: %74.33 | Val Top5: %93.40 | Gap: %0.41 | LR: 0.019189
+--> NEW RECORD! (Top1: %74.33 | Top5: %93.40) Saving...
+164    | 100    | 1.6633   | 75.56  % | 0.018228  | 1.7509    
+>>> Epoch 164 Ended. Duration: 14.41 sec
+>>> Epoch 164 Summary | Train Top1: %75.06 | Train Top5: %91.81 | Val Top1: %73.51 | Val Top5: %92.72 | Gap: %1.55 | LR: 0.018228
+    Epoch Val -> Top1: %73.51 (Best: %74.33) | Top5: %92.72
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 164...
+165    | 100    | 1.6570   | 75.57  % | 0.017291  | 1.7857    
+>>> Epoch 165 Ended. Duration: 14.47 sec
+>>> Epoch 165 Summary | Train Top1: %75.28 | Train Top5: %91.97 | Val Top1: %74.29 | Val Top5: %93.02 | Gap: %0.99 | LR: 0.017291
+    Epoch Val -> Top1: %74.29 (Best: %74.33) | Top5: %93.02
+166    | 100    | 1.6588   | 75.73  % | 0.016375  | 1.8518    
+>>> Epoch 166 Ended. Duration: 14.47 sec
+>>> Epoch 166 Summary | Train Top1: %75.41 | Train Top5: %91.80 | Val Top1: %74.40 | Val Top5: %92.92 | Gap: %1.01 | LR: 0.016375
+--> NEW RECORD! (Top1: %74.40 | Top5: %92.92) Saving...
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 166...
+167    | 100    | 1.6366   | 76.12  % | 0.015483  | 1.7530    
+>>> Epoch 167 Ended. Duration: 14.40 sec
+>>> Epoch 167 Summary | Train Top1: %75.79 | Train Top5: %92.01 | Val Top1: %74.05 | Val Top5: %92.69 | Gap: %1.74 | LR: 0.015483
+    Epoch Val -> Top1: %74.05 (Best: %74.40) | Top5: %92.69
+168    | 100    | 1.6414   | 76.23  % | 0.014613  | 1.8039    
+>>> Epoch 168 Ended. Duration: 14.51 sec
+>>> Epoch 168 Summary | Train Top1: %75.88 | Train Top5: %92.09 | Val Top1: %75.40 | Val Top5: %93.96 | Gap: %0.48 | LR: 0.014613
+--> NEW RECORD! (Top1: %75.40 | Top5: %93.96) Saving...
+>>> [Topology Update] Mod: SEARCH (Explore) | Epoch 168...
+169    | 100    | 1.6462   | 75.93  % | 0.013768  | 1.7452    
+>>> Epoch 169 Ended. Duration: 14.41 sec
+>>> Epoch 169 Summary | Train Top1: %76.08 | Train Top5: %92.07 | Val Top1: %74.61 | Val Top5: %92.74 | Gap: %1.47 | LR: 0.013768
+    Epoch Val -> Top1: %74.61 (Best: %75.40) | Top5: %92.74
+170    | 100    | 1.6311   | 76.59  % | 0.012945  | 1.7874    
+>>> Epoch 170 Ended. Duration: 14.44 sec
+>>> Epoch 170 Summary | Train Top1: %76.41 | Train Top5: %92.24 | Val Top1: %74.82 | Val Top5: %93.07 | Gap: %1.59 | LR: 0.012945
+    Epoch Val -> Top1: %74.82 (Best: %75.40) | Top5: %93.07
+>>> [STRATEGY CHANGE] COOLDOWN STARTING! (Explore=0, Exploit=100%)
+171    | 100    | 1.5761   | 78.05  % | 0.012147  | 1.7407    
+>>> Epoch 171 Ended. Duration: 14.83 sec
+>>> Epoch 171 Summary | Train Top1: %78.31 | Train Top5: %92.99 | Val Top1: %77.35 | Val Top5: %94.84 | Gap: %0.96 | LR: 0.012147
+--> NEW RECORD! (Top1: %77.35 | Top5: %94.84) Saving...
+172    | 100    | 1.5547   | 79.05  % | 0.011372  | 1.8591    
+>>> Epoch 172 Ended. Duration: 14.85 sec
+>>> Epoch 172 Summary | Train Top1: %78.85 | Train Top5: %93.13 | Val Top1: %77.93 | Val Top5: %94.90 | Gap: %0.92 | LR: 0.011372
+--> NEW RECORD! (Top1: %77.93 | Top5: %94.90) Saving...
+173    | 100    | 1.5436   | 79.40  % | 0.010622  | 1.7570    
+>>> Epoch 173 Ended. Duration: 14.76 sec
+>>> Epoch 173 Summary | Train Top1: %79.02 | Train Top5: %93.11 | Val Top1: %77.69 | Val Top5: %94.78 | Gap: %1.33 | LR: 0.010622
+    Epoch Val -> Top1: %77.69 (Best: %77.93) | Top5: %94.78
+174    | 100    | 1.5353   | 79.63  % | 0.009896  | 1.8608    
+>>> Epoch 174 Ended. Duration: 14.79 sec
+>>> Epoch 174 Summary | Train Top1: %79.62 | Train Top5: %93.21 | Val Top1: %77.41 | Val Top5: %94.74 | Gap: %2.21 | LR: 0.009896
+    Epoch Val -> Top1: %77.41 (Best: %77.93) | Top5: %94.74
+175    | 100    | 1.5281   | 80.05  % | 0.009195  | 1.8425    
+>>> Epoch 175 Ended. Duration: 14.74 sec
+>>> Epoch 175 Summary | Train Top1: %79.65 | Train Top5: %93.37 | Val Top1: %77.44 | Val Top5: %94.94 | Gap: %2.21 | LR: 0.009195
+    Epoch Val -> Top1: %77.44 (Best: %77.93) | Top5: %94.94
+176    | 100    | 1.5233   | 80.45  % | 0.008518  | 1.8308    
+>>> Epoch 176 Ended. Duration: 14.73 sec
+>>> Epoch 176 Summary | Train Top1: %79.92 | Train Top5: %93.32 | Val Top1: %77.57 | Val Top5: %94.84 | Gap: %2.35 | LR: 0.008518
+    Epoch Val -> Top1: %77.57 (Best: %77.93) | Top5: %94.84
+177    | 100    | 1.5176   | 80.19  % | 0.007867  | 1.8264    
+>>> Epoch 177 Ended. Duration: 14.74 sec
+>>> Epoch 177 Summary | Train Top1: %80.27 | Train Top5: %93.53 | Val Top1: %77.95 | Val Top5: %94.55 | Gap: %2.32 | LR: 0.007867
+--> NEW RECORD! (Top1: %77.95 | Top5: %94.55) Saving...
+178    | 100    | 1.5152   | 80.51  % | 0.007241  | 1.7958    
+>>> Epoch 178 Ended. Duration: 14.85 sec
+>>> Epoch 178 Summary | Train Top1: %80.55 | Train Top5: %93.55 | Val Top1: %77.89 | Val Top5: %94.94 | Gap: %2.66 | LR: 0.007241
+    Epoch Val -> Top1: %77.89 (Best: %77.95) | Top5: %94.94
+179    | 100    | 1.5061   | 80.83  % | 0.006640  | 1.6145    
+>>> Epoch 179 Ended. Duration: 14.83 sec
+>>> Epoch 179 Summary | Train Top1: %80.49 | Train Top5: %93.48 | Val Top1: %77.75 | Val Top5: %94.85 | Gap: %2.74 | LR: 0.006640
+    Epoch Val -> Top1: %77.75 (Best: %77.95) | Top5: %94.85
+180    | 100    | 1.5056   | 80.81  % | 0.006065  | 2.0608    
+>>> Epoch 180 Ended. Duration: 14.77 sec
+>>> Epoch 180 Summary | Train Top1: %80.80 | Train Top5: %93.57 | Val Top1: %77.99 | Val Top5: %94.95 | Gap: %2.81 | LR: 0.006065
+--> NEW RECORD! (Top1: %77.99 | Top5: %94.95) Saving...
+181    | 100    | 1.4990   | 81.03  % | 0.005516  | 1.9832    
+>>> Epoch 181 Ended. Duration: 14.80 sec
+>>> Epoch 181 Summary | Train Top1: %80.82 | Train Top5: %93.67 | Val Top1: %78.44 | Val Top5: %94.97 | Gap: %2.38 | LR: 0.005516
+--> NEW RECORD! (Top1: %78.44 | Top5: %94.97) Saving...
+182    | 100    | 1.4829   | 81.57  % | 0.004992  | 1.8257    
+>>> Epoch 182 Ended. Duration: 14.76 sec
+>>> Epoch 182 Summary | Train Top1: %81.39 | Train Top5: %93.96 | Val Top1: %78.25 | Val Top5: %95.04 | Gap: %3.14 | LR: 0.004992
+    Epoch Val -> Top1: %78.25 (Best: %78.44) | Top5: %95.04
+183    | 100    | 1.4876   | 81.49  % | 0.004494  | 1.6740    
+>>> Epoch 183 Ended. Duration: 14.76 sec
+>>> Epoch 183 Summary | Train Top1: %81.34 | Train Top5: %93.70 | Val Top1: %77.81 | Val Top5: %94.97 | Gap: %3.53 | LR: 0.004494
+    Epoch Val -> Top1: %77.81 (Best: %78.44) | Top5: %94.97
+184    | 100    | 1.4820   | 81.63  % | 0.004023  | 1.8000    
+>>> Epoch 184 Ended. Duration: 14.83 sec
+>>> Epoch 184 Summary | Train Top1: %81.68 | Train Top5: %93.96 | Val Top1: %78.36 | Val Top5: %95.06 | Gap: %3.32 | LR: 0.004023
+    Epoch Val -> Top1: %78.36 (Best: %78.44) | Top5: %95.06
+185    | 100    | 1.4867   | 81.31  % | 0.003577  | 1.8995    
+>>> Epoch 185 Ended. Duration: 14.77 sec
+>>> Epoch 185 Summary | Train Top1: %81.46 | Train Top5: %93.97 | Val Top1: %78.47 | Val Top5: %94.91 | Gap: %2.99 | LR: 0.003577
+--> NEW RECORD! (Top1: %78.47 | Top5: %94.91) Saving...
+186    | 100    | 1.4698   | 82.04  % | 0.003158  | 1.7864    
+>>> Epoch 186 Ended. Duration: 14.77 sec
+>>> Epoch 186 Summary | Train Top1: %81.74 | Train Top5: %94.04 | Val Top1: %78.50 | Val Top5: %95.08 | Gap: %3.24 | LR: 0.003158
+--> NEW RECORD! (Top1: %78.50 | Top5: %95.08) Saving...
+187    | 100    | 1.4700   | 82.10  % | 0.002766  | 1.9310    
+>>> Epoch 187 Ended. Duration: 14.82 sec
+>>> Epoch 187 Summary | Train Top1: %82.20 | Train Top5: %94.14 | Val Top1: %78.17 | Val Top5: %95.06 | Gap: %4.03 | LR: 0.002766
+    Epoch Val -> Top1: %78.17 (Best: %78.50) | Top5: %95.06
+188    | 100    | 1.4565   | 82.61  % | 0.002400  | 2.0935    
+>>> Epoch 188 Ended. Duration: 14.81 sec
+>>> Epoch 188 Summary | Train Top1: %82.39 | Train Top5: %94.31 | Val Top1: %78.46 | Val Top5: %95.07 | Gap: %3.93 | LR: 0.002400
+    Epoch Val -> Top1: %78.46 (Best: %78.50) | Top5: %95.07
+189    | 100    | 1.4703   | 81.87  % | 0.002061  | 1.9410    
+>>> Epoch 189 Ended. Duration: 14.75 sec
+>>> Epoch 189 Summary | Train Top1: %81.98 | Train Top5: %93.94 | Val Top1: %78.40 | Val Top5: %95.11 | Gap: %3.58 | LR: 0.002061
+    Epoch Val -> Top1: %78.40 (Best: %78.50) | Top5: %95.11
+190    | 100    | 1.4672   | 81.92  % | 0.001749  | 2.0117    
+>>> Epoch 190 Ended. Duration: 14.81 sec
+>>> Epoch 190 Summary | Train Top1: %81.88 | Train Top5: %93.98 | Val Top1: %78.26 | Val Top5: %95.21 | Gap: %3.62 | LR: 0.001749
+    Epoch Val -> Top1: %78.26 (Best: %78.50) | Top5: %95.21
+191    | 100    | 1.4608   | 82.25  % | 0.001463  | 1.9780    
+>>> Epoch 191 Ended. Duration: 14.85 sec
+>>> Epoch 191 Summary | Train Top1: %82.39 | Train Top5: %94.17 | Val Top1: %78.43 | Val Top5: %95.11 | Gap: %3.96 | LR: 0.001463
+    Epoch Val -> Top1: %78.43 (Best: %78.50) | Top5: %95.11
+192    | 100    | 1.4603   | 82.51  % | 0.001205  | 1.8984    
+>>> Epoch 192 Ended. Duration: 14.74 sec
+>>> Epoch 192 Summary | Train Top1: %82.64 | Train Top5: %94.19 | Val Top1: %78.65 | Val Top5: %95.22 | Gap: %3.99 | LR: 0.001205
+--> NEW RECORD! (Top1: %78.65 | Top5: %95.22) Saving...
+193    | 100    | 1.4529   | 82.52  % | 0.000973  | 1.9968    
+>>> Epoch 193 Ended. Duration: 14.81 sec
+>>> Epoch 193 Summary | Train Top1: %82.71 | Train Top5: %94.31 | Val Top1: %78.53 | Val Top5: %95.14 | Gap: %4.18 | LR: 0.000973
+    Epoch Val -> Top1: %78.53 (Best: %78.65) | Top5: %95.14
+194    | 100    | 1.4474   | 82.82  % | 0.000769  | 1.8497    
+>>> Epoch 194 Ended. Duration: 14.70 sec
+>>> Epoch 194 Summary | Train Top1: %82.93 | Train Top5: %94.35 | Val Top1: %78.47 | Val Top5: %95.20 | Gap: %4.46 | LR: 0.000769
+    Epoch Val -> Top1: %78.47 (Best: %78.65) | Top5: %95.20
+195    | 100    | 1.4560   | 82.43  % | 0.000591  | 1.5968    
+>>> Epoch 195 Ended. Duration: 14.80 sec
+>>> Epoch 195 Summary | Train Top1: %82.67 | Train Top5: %94.25 | Val Top1: %78.49 | Val Top5: %95.24 | Gap: %4.18 | LR: 0.000591
+    Epoch Val -> Top1: %78.49 (Best: %78.65) | Top5: %95.24
+196    | 100    | 1.4488   | 82.61  % | 0.000441  | 1.7954    
+>>> Epoch 196 Ended. Duration: 14.79 sec
+>>> Epoch 196 Summary | Train Top1: %82.69 | Train Top5: %94.37 | Val Top1: %78.47 | Val Top5: %95.24 | Gap: %4.22 | LR: 0.000441
+    Epoch Val -> Top1: %78.47 (Best: %78.65) | Top5: %95.24
+197    | 100    | 1.4582   | 82.59  % | 0.000319  | 2.0773    
+>>> Epoch 197 Ended. Duration: 14.71 sec
+>>> Epoch 197 Summary | Train Top1: %82.85 | Train Top5: %94.28 | Val Top1: %78.46 | Val Top5: %95.17 | Gap: %4.39 | LR: 0.000319
+    Epoch Val -> Top1: %78.46 (Best: %78.65) | Top5: %95.17
+198    | 100    | 1.4362   | 83.17  % | 0.000223  | 1.9983    
+>>> Epoch 198 Ended. Duration: 14.75 sec
+>>> Epoch 198 Summary | Train Top1: %82.94 | Train Top5: %94.52 | Val Top1: %78.46 | Val Top5: %95.18 | Gap: %4.48 | LR: 0.000223
+    Epoch Val -> Top1: %78.46 (Best: %78.65) | Top5: %95.18
+199    | 100    | 1.4451   | 82.97  % | 0.000155  | 1.7429    
+>>> Epoch 199 Ended. Duration: 14.81 sec
+>>> Epoch 199 Summary | Train Top1: %83.04 | Train Top5: %94.33 | Val Top1: %78.55 | Val Top5: %95.29 | Gap: %4.49 | LR: 0.000155
+    Epoch Val -> Top1: %78.55 (Best: %78.65) | Top5: %95.29
+200    | 100    | 1.4513   | 82.90  % | 0.000114  | 2.0897    
+>>> Epoch 200 Ended. Duration: 14.82 sec
+>>> Epoch 200 Summary | Train Top1: %82.96 | Train Top5: %94.29 | Val Top1: %78.59 | Val Top5: %95.24 | Gap: %4.37 | LR: 0.000114
+    Epoch Val -> Top1: %78.59 (Best: %78.65) | Top5: %95.24
+-------------------------
+Total Wall Clock Time: 0h 51min 18sec
+Last Model Save: LAST_MODEL_epoch200.pth
 
-================================================================================
-MODEL: HalspNet 101 (Dense Eval) BEING ANALYZED
-================================================================================
-[+] Params: 1.75M | FLOPs: 1.0078G
+>>> Final test with BEST MODEL: (BEST_MODEL.pth) loading...
 
-Batch  | Throughput      | Latency    | VRAM       | GPU %   | Temp   | Power   
--------------------------------------------------------------------------------------
-1      | 220.14          | 4.54       | 33.97      | 23%     | 35C    | 82.7W   
-2      | 444.39          | 4.50       | 52.98      | 38%     | 36C    | 89.2W   
-4      | 896.04          | 4.46       | 89.52      | 45%     | 37C    | 114.7W  
-8      | 1787.04         | 4.48       | 163.25     | 65%     | 40C    | 161.0W  
-16     | 3296.26         | 4.85       | 303.69     | 97%     | 44C    | 245.9W  
-32     | 3611.06         | 8.86       | 586.41     | 100%    | 46C    | 268.9W  
-64     | 3796.82         | 16.86      | 1156.03    | 100%    | 48C    | 281.3W  
-128    | 3814.32         | 33.56      | 2296.78    | 100%    | 51C    | 293.3W  
-256    | 3855.15         | 66.40      | 4574.78    | 100%    | 53C    | 295.9W  
+--- TEST RESULTS ---
+Final Top-1 Accuracy : %78.65
+Final Top-5 Accuracy : %95.22
+------------------------------
+Final Top-1 Error    : %21.35
+Final Top-5 Error    : %4.78
 
-================================================================================
-MODEL: ResNet-101 (Raw) BEING ANALYZED
-================================================================================
-[+] Params: 42.71M | FLOPs: 7.8321G
+--- CLASS SPECIFIC RESULTS ---
+ID  | CLASS                | ACCURACY  
+----------------------------------------
+0   | apple                | %91.00
+1   | aquarium_fish        | %93.00
+2   | baby                 | %70.00
+3   | bear                 | %59.00
+4   | beaver               | %68.00
+5   | bed                  | %85.00
+6   | bee                  | %87.00
+7   | beetle               | %78.00
+8   | bicycle              | %94.00
+9   | bottle               | %82.00
+10  | bowl                 | %53.00
+11  | boy                  | %62.00
+12  | bridge               | %84.00
+13  | bus                  | %71.00
+14  | butterfly            | %78.00
+15  | camel                | %86.00
+16  | can                  | %76.00
+17  | castle               | %89.00
+18  | caterpillar          | %72.00
+19  | cattle               | %71.00
+20  | chair                | %88.00
+21  | chimpanzee           | %90.00
+22  | clock                | %82.00
+23  | cloud                | %87.00
+24  | cockroach            | %86.00
+25  | couch                | %70.00
+26  | crab                 | %79.00
+27  | crocodile            | %73.00
+28  | cup                  | %83.00
+29  | dinosaur             | %81.00
+30  | dolphin              | %81.00
+31  | elephant             | %81.00
+32  | flatfish             | %71.00
+33  | forest               | %68.00
+34  | fox                  | %81.00
+35  | girl                 | %57.00
+36  | hamster              | %87.00
+37  | house                | %77.00
+38  | kangaroo             | %78.00
+39  | keyboard             | %92.00
+40  | lamp                 | %73.00
+41  | lawn_mower           | %92.00
+42  | leopard              | %80.00
+43  | lion                 | %85.00
+44  | lizard               | %60.00
+45  | lobster              | %67.00
+46  | man                  | %58.00
+47  | maple_tree           | %70.00
+48  | motorcycle           | %93.00
+49  | mountain             | %93.00
+50  | mouse                | %64.00
+51  | mushroom             | %81.00
+52  | oak_tree             | %71.00
+53  | orange               | %94.00
+54  | orchid               | %91.00
+55  | otter                | %59.00
+56  | palm_tree            | %92.00
+57  | pear                 | %80.00
+58  | pickup_truck         | %93.00
+59  | pine_tree            | %74.00
+60  | plain                | %86.00
+61  | plate                | %78.00
+62  | poppy                | %82.00
+63  | porcupine            | %78.00
+64  | possum               | %63.00
+65  | rabbit               | %74.00
+66  | raccoon              | %85.00
+67  | ray                  | %69.00
+68  | road                 | %95.00
+69  | rocket               | %84.00
+70  | rose                 | %81.00
+71  | sea                  | %83.00
+72  | seal                 | %55.00
+73  | shark                | %65.00
+74  | shrew                | %63.00
+75  | skunk                | %92.00
+76  | skyscraper           | %94.00
+77  | secail                | %77.00
+78  | secake                | %68.00
+79  | spider               | %83.00
+80  | squirrel             | %68.00
+81  | streetcar            | %83.00
+82  | sunflower            | %94.00
+83  | sweet_pepper         | %78.00
+84  | table                | %76.00
+85  | tank                 | %93.00
+86  | telephone            | %80.00
+87  | television           | %89.00
+88  | tiger                | %84.00
+89  | tractor              | %88.00
+90  | train                | %84.00
+91  | trout                | %85.00
+92  | tulip                | %72.00
+93  | turtle               | %66.00
+94  | wardrobe             | %93.00
+95  | whale                | %75.00
+96  | willow_tree          | %69.00
+97  | wolf                 | %81.00
+98  | woman                | %57.00
+99  | worm                 | %84.00
 
-Batch  | Throughput      | Latency    | VRAM       | GPU %   | Temp   | Power   
--------------------------------------------------------------------------------------
-1      | 81.94           | 12.20      | 184.39     | 27%     | 43C    | 72.6W   
-2      | 175.94          | 11.37      | 194.57     | 33%     | 41C    | 89.0W   
-4      | 343.87          | 11.63      | 215.88     | 37%     | 42C    | 111.7W  
-8      | 696.27          | 11.49      | 257.57     | 53%     | 44C    | 159.2W  
-16     | 1393.08         | 11.49      | 344.50     | 85%     | 48C    | 239.8W  
-32     | 1779.45         | 17.98      | 509.94     | 100%    | 52C    | 291.4W  
-64     | 1883.43         | 33.98      | 846.82     | 100%    | 54C    | 300.7W  
-128    | 1948.33         | 65.70      | 1521.07    | 100%    | 55C    | 314.5W  
-256    | 1979.76         | 129.31     | 2869.07    | 100%    | 58C    | 323.0W  
-
-================================================================================
-MODEL: ResNet-50 (Raw) BEING ANALYZED
-================================================================================
-[+] Params: 23.71M | FLOPs: 4.1097G
-
-Batch  | Throughput      | Latency    | VRAM       | GPU %   | Temp   | Power   
--------------------------------------------------------------------------------------
-1      | 164.01          | 6.10       | 113.12     | 25%     | 43C    | 87.8W   
-2      | 340.68          | 5.87       | 121.89     | 43%     | 42C    | 100.1W  
-4      | 682.73          | 5.86       | 143.89     | 50%     | 42C    | 124.9W  
-8      | 1355.84         | 5.90       | 184.89     | 67%     | 45C    | 176.4W  
-16     | 2540.74         | 6.30       | 271.83     | 100%    | 49C    | 264.8W  
-32     | 2777.31         | 11.52      | 437.27     | 100%    | 50C    | 279.9W  
-64     | 2919.75         | 21.92      | 774.14     | 100%    | 52C    | 292.1W  
-128    | 3023.63         | 42.33      | 1448.39    | 100%    | 54C    | 302.0W  
-256    | 3086.68         | 82.94      | 2796.39    | 100%    | 56C    | 310.4W  
-
-================================================================================
-MODEL: EfficientNet-B0 (Raw) BEING ANALYZED
-================================================================================
-[+] Params: 4.14M | FLOPs: 0.4005G
-
-Batch  | Throughput      | Latency    | VRAM       | GPU %   | Temp   | Power   
--------------------------------------------------------------------------------------
-1      | 122.94          | 8.13       | 36.24      | 22%     | 38C    | 55.4W   
-2      | 240.45          | 8.32       | 46.77      | 21%     | 36C    | 75.3W   
-4      | 472.42          | 8.47       | 67.82      | 29%     | 35C    | 65.4W   
-8      | 934.69          | 8.56       | 109.93     | 32%     | 36C    | 90.4W   
-16     | 1916.41         | 8.35       | 195.15     | 48%     | 38C    | 132.7W  
-32     | 3819.93         | 8.38       | 365.59     | 82%     | 41C    | 210.3W  
-64     | 4979.31         | 12.85      | 699.46     | 100%    | 44C    | 262.1W  
-128    | 5256.81         | 24.35      | 1373.71    | 100%    | 47C    | 275.8W  
-256    | 5423.53         | 47.20      | 2721.71    | 100%    | 50C    | 288.2W  
-
-================================================================================
-MODEL: MobileNetV3-Large (Raw) BEING ANALYZED
-================================================================================
-[+] Params: 4.33M | FLOPs: 0.2249G
-
-Batch  | Throughput      | Latency    | VRAM       | GPU %   | Temp   | Power   
--------------------------------------------------------------------------------------
-1      | 163.13          | 6.13       | 34.92      | 21%     | 36C    | 54.6W   
-2      | 323.06          | 6.19       | 41.32      | 24%     | 35C    | 56.0W   
-4      | 632.50          | 6.32       | 56.25      | 28%     | 34C    | 59.2W   
-8      | 1248.26         | 6.41       | 86.11      | 35%     | 35C    | 66.4W   
-16     | 2512.52         | 6.37       | 147.83     | 41%     | 36C    | 97.6W   
-32     | 4769.04         | 6.71       | 265.26     | 61%     | 39C    | 158.4W  
-64     | 8358.86         | 7.66       | 504.14     | 100%    | 43C    | 244.8W  
-128    | 8882.24         | 14.41      | 982.39     | 100%    | 44C    | 260.5W  
-256    | 9054.79         | 28.27      | 1938.39    | 100%    | 47C    | 269.8W  
-
-================================================================================
-MODEL: ShuffleNetV2-1.0x (Raw) BEING ANALYZED
-================================================================================
-[+] Params: 1.36M | FLOPs: 0.1479G
-
-Batch  | Throughput      | Latency    | VRAM       | GPU %   | Temp   | Power   
--------------------------------------------------------------------------------------
-1      | 169.72          | 5.89       | 17.88      | 16%     | 39C    | 70.1W   
-2      | 313.61          | 6.38       | 20.75      | 22%     | 37C    | 54.2W   
-4      | 634.17          | 6.31       | 27.48      | 24%     | 36C    | 56.7W   
-8      | 1281.86         | 6.24       | 38.96      | 28%     | 36C    | 62.5W   
-16     | 2490.07         | 6.43       | 60.95      | 31%     | 37C    | 80.1W   
-32     | 4786.27         | 6.69       | 106.88     | 40%     | 39C    | 116.2W  
-64     | 9659.95         | 6.63       | 199.76     | 64%     | 42C    | 168.2W  
-128    | 16756.65        | 7.64       | 385.01     | 100%    | 46C    | 253.9W  
-256    | 16986.83        | 15.07      | 751.01     | 100%    | 48C    | 274.0W  
-
-================================================================================
-MODEL: ConvNeXt-Tiny (Raw) BEING ANALYZED
-================================================================================
-[+] Params: 27.90M | FLOPs: 4.4697G
-
-Batch  | Throughput      | Latency    | VRAM       | GPU %   | Temp   | Power   
--------------------------------------------------------------------------------------
-1      | 195.53          | 5.11       | 130.51     | 39%     | 39C    | 107.6W  
-2      | 398.15          | 5.02       | 141.72     | 59%     | 40C    | 142.9W  
-4      | 797.87          | 5.01       | 164.99     | 88%     | 44C    | 216.7W  
-8      | 1083.19         | 7.39       | 213.22     | 99%     | 47C    | 273.5W  
-16     | 1207.89         | 13.25      | 310.69     | 100%    | 49C    | 291.3W  
-32     | 1280.18         | 25.00      | 504.63     | 100%    | 52C    | 307.5W  
-64     | 1326.66         | 48.24      | 889.50     | 100%    | 55C    | 315.2W  
-128    | 1368.73         | 93.52      | 1662.75    | 99%     | 57C    | 314.5W  
-256    | 1385.43         | 184.78     | 3204.75    | 100%    | 60C    | 317.3W  
-
-================================================================================
-MODEL: RepVGG-A0 (Deploy Mode) BEING ANALYZED
-================================================================================
-[+] Params: 7.96M | FLOPs: 1.5204G
-
-Batch  | Throughput      | Latency    | VRAM       | GPU %   | Temp   | Power   
--------------------------------------------------------------------------------------
-1      | 157.37          | 6.35       | 52.78      | 19%     | 47C    | 79.7W   
-2      | 319.67          | 6.26       | 57.18      | 27%     | 44C    | 64.6W   
-4      | 645.52          | 6.20       | 70.57      | 27%     | 43C    | 75.9W   
-8      | 1273.12         | 6.28       | 100.43     | 31%     | 44C    | 102.8W  
-16     | 2545.26         | 6.29       | 160.15     | 43%     | 45C    | 130.1W  
-32     | 5081.20         | 6.30       | 281.08     | 69%     | 48C    | 199.6W  
-64     | 7949.05         | 8.05       | 521.46     | 100%    | 52C    | 281.6W  
-128    | 8061.95         | 15.88      | 996.71     | 100%    | 53C    | 290.3W  
-256    | 8118.50         | 31.53      | 1952.71    | 100%    | 54C    | 296.8W  
-
-================================================================================
-MODEL: GhostNet-100 (Raw) BEING ANALYZED
-================================================================================
-[+] Params: 4.03M | FLOPs: 0.1471G
-
-Batch  | Throughput      | Latency    | VRAM       | GPU %   | Temp   | Power   
--------------------------------------------------------------------------------------
-1      | 100.92          | 9.91       | 33.44      | 19%     | 41C    | 55.0W   
-2      | 202.92          | 9.86       | 39.63      | 17%     | 40C    | 68.7W   
-4      | 388.20          | 10.30      | 52.09      | 19%     | 39C    | 70.0W   
-8      | 786.86          | 10.17      | 78.89      | 22%     | 38C    | 76.4W   
-16     | 1558.75         | 10.26      | 132.48     | 29%     | 38C    | 89.1W   
-32     | 3084.61         | 10.37      | 240.17     | 43%     | 39C    | 126.0W  
-64     | 6233.42         | 10.27      | 458.04     | 77%     | 43C    | 194.7W  
-128    | 8497.72         | 15.06      | 885.29     | 100%    | 46C    | 248.9W  
-256    | 8747.84         | 29.26      | 1741.29    | 100%    | 48C    | 263.7W  
-
-================================================================================
-MODEL: MobileViT-XS (Raw) BEING ANALYZED
-================================================================================
-[+] Params: 1.97M | FLOPs: 0.7231G
-
-Batch  | Throughput      | Latency    | VRAM       | GPU %   | Temp   | Power   
--------------------------------------------------------------------------------------
-1      | 112.07          | 8.92       | 32.65      | 23%     | 40C    | 67.2W   
-2      | 229.47          | 8.72       | 47.55      | 23%     | 39C    | 77.1W   
-4      | 454.64          | 8.80       | 78.35      | 30%     | 39C    | 87.6W   
-8      | 906.56          | 8.82       | 140.28     | 45%     | 40C    | 115.8W  
-16     | 1829.32         | 8.75       | 260.25     | 79%     | 43C    | 171.8W  
-32     | 2536.35         | 12.62      | 501.19     | 100%    | 46C    | 217.7W  
-64     | 2664.71         | 24.02      | 985.06     | 100%    | 48C    | 231.7W  
-128    | 2755.63         | 46.45      | 1953.31    | 100%    | 50C    | 236.9W  
-256    | 2797.08         | 91.52      | 3889.31    | 100%    | 51C    | 243.7W  
-
-================================================================================
-MODEL: RegNetY-400MF (Raw) BEING ANALYZED
-================================================================================
-[+] Params: 3.95M | FLOPs: 0.4100G
-
-Batch  | Throughput      | Latency    | VRAM       | GPU %   | Temp   | Power   
--------------------------------------------------------------------------------------
-1      | 108.11          | 9.25       | 34.72      | 22%     | 37C    | 54.5W   
-2      | 216.48          | 9.24       | 42.37      | 26%     | 35C    | 55.5W   
-4      | 423.79          | 9.44       | 59.21      | 32%     | 35C    | 59.3W   
-8      | 794.39          | 10.07      | 92.34      | 33%     | 34C    | 62.6W   
-16     | 1586.16         | 10.09      | 141.33     | 39%     | 34C    | 75.8W   
-32     | 3133.25         | 10.21      | 259.70     | 48%     | 37C    | 129.4W  
-64     | 6285.08         | 10.18      | 492.45     | 81%     | 41C    | 200.9W  
-128    | 7776.94         | 16.46      | 956.45     | 96%     | 44C    | 239.9W  
-256    | 8211.75         | 31.17      | 1887.95    | 98%     | 46C    | 258.8W  
+Log saved: training_log.txt
