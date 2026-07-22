@@ -72,16 +72,16 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 # ==========================================
 # 2. MODEL LOADERS
 # ==========================================
-def get_custom_halvit_model(path=None):
+def get_custom_halsp_model(path=None):
     try:
-        from halvit_sparse import ResNet50
+        from halsp import ResNet50
         model = ResNet50(num_classes=NUM_CLASSES).to(device)
         if path and os.path.exists(path):
             state_dict = torch.load(path, map_location=device)
             model.load_state_dict(state_dict, strict=False)
-        return model, "HaLVIT (Dense Eval)"
+        return model, "HalspNet"
     except ImportError:
-        logger.error("ERROR: 'halvit_sparse.py' not found!")
+        logger.error("ERROR: 'halsp.py' not found!")
         return None, None
 
 def get_standard_torchvision_model():
@@ -217,7 +217,7 @@ if __name__ == "__main__":
     
     # LAZY LOADING - To prevent memory overflow
     model_loaders = [
-        lambda: get_custom_halvit_model(MODEL_PATH),
+        lambda: get_custom_halsp_model(MODEL_PATH),
         get_standard_torchvision_model,
         get_efficientnet,
         get_mobilenet,
