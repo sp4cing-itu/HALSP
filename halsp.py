@@ -1,7 +1,7 @@
 # halsp.py
 # HALSP-Net: Hierarchical Active channel Latent Shared Projection Network
 # Reference: "HALSP-Net: A Shared Projection Architecture with Dynamic Channel Selection"
-# This module implements the core OpNetStage and a ResNet50 wrapper.
+# This module implements the core HalspNetStage and a ResNet50 wrapper.
 #
 # The stage uses a single learnable weight matrix (master_weight) to perform three roles:
 #   1. Entry projection (C_in -> C_mid)
@@ -16,7 +16,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 
-class OpNetStage(nn.Module):
+class HalspNetStage(nn.Module):
     """
     A single HALSP stage containing multiple blocks that share the same projection matrix.
     
@@ -72,7 +72,7 @@ class OpNetStage(nn.Module):
         ]
 
         print(
-            f"[DEBUG] OpNetStage: {num_blocks} Block | "
+            f"[DEBUG] HalspNetStage: {num_blocks} Block | "
             f"Matrix: {mid_channels}x{out_channels} (Shared)"
         )
 
@@ -515,7 +515,7 @@ class StandardBottleneck(nn.Module):
 
 class ResNet50(nn.Module):
     """
-    ResNet50‑style architecture where all bottleneck stages are replaced by HALSP OpNetStage.
+    ResNet50‑style architecture where all bottleneck stages are replaced by HALSP HalspNetStage.
     Supports warm‑up (dense), search (sparse), and cooldown (dense) phases.
     """
     def __init__(self, num_classes=1000):
@@ -584,13 +584,13 @@ class ResNet50(nn.Module):
         width_per_group=8,
     ):
         """
-        Create a layer composed of either HALSP OpNetStages or StandardBottlenecks.
+        Create a layer composed of either HALSP HalspNetStages or StandardBottlenecks.
         """
         expansion = 4
 
         if use_opnet_structure:
             out_channels = mid_channels * expansion
-            stage = OpNetStage(
+            stage = HalspNetStage(
                 self.in_channels,
                 out_channels,
                 mid_channels,
