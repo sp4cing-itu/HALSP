@@ -7,8 +7,8 @@ import subprocess
 import logging
 import threading
 import torchvision.models as models
-import timm  # for RepVGG
-from fvcore.nn import FlopCountAnalysis, flop_count_table  # for real FLOPs measurement
+import timm  
+from fvcore.nn import FlopCountAnalysis  
 
 torch.backends.cudnn.benchmark = True
 
@@ -59,8 +59,9 @@ class HardwareMonitor:
 # 1. SETTINGS (CONFIG)
 # ==========================================
 MODEL_PATH = "results/BEST_MODEL.pth" 
-BATCH_SIZES = [1, 2,4,8, 16, 32, 64, 128, 256] 
-INPUT_SHAPE = (3, 224, 224) 
+# Realistic video/camera resolutions (must be multiples of 32)
+# 224 (Standard), 256 (Square), 384, 512, 736 (~720p), 1088 (~1080p)
+RESOLUTIONS = [224, 256, 384, 512, 736, 1088] 
 NUM_CLASSES = 100
 WARMUP_ROUNDS = 50
 TEST_ROUNDS = 200
@@ -72,7 +73,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 # ==========================================
 # 2. MODEL LOADERS
 # ==========================================
-def get_custom_halsp_model(path=None):
+def get_custom_halvit_model(path=None):
     try:
         from halsp import ResNet50
         model = ResNet50(num_classes=NUM_CLASSES).to(device)
@@ -105,7 +106,6 @@ def get_convnext():
     return convnext.to(device), "ConvNeXt-Tiny (Raw)"
 
 def get_repvgg():
-    # RepVGG must be switched to deploy mode for inference speed measurement
     repvgg = timm.create_model('repvgg_a0', pretrained=False, num_classes=NUM_CLASSES)
     if hasattr(repvgg, 'switch_to_deploy'):
         repvgg.switch_to_deploy()
@@ -123,45 +123,45 @@ def get_regnet():
     regnet = models.regnet_y_400mf(weights=None, num_classes=NUM_CLASSES)
     return regnet.to(device), "RegNetY-400MF (Raw)"
 
+
 # ==========================================
-# 3. BENCHMARK ENGINE
+# 3. BENCHMARK ENGINE (RESOLUTION)
 # ==========================================
-def run_inference_benchmark(model, model_name):
-    # Put model in eval mode directly
+def run_resolution_benchmark(model, model_name):
     model.eval() 
 
-    logger.info(f"\n{'='*80}\nMODEL: {model_name} BEING ANALYZED\n{'='*80}")
+    logger.info(f"\n{'='*95}\nMODEL: {model_name} (FPS TEST)\n{'='*95}")
     
-    dummy_single = torch.randn(1, *INPUT_SHAPE).to(device)
-    
-    # Warmup
-    with torch.no_grad():
-        for _ in range(3): _ = model(dummy_single)
-            
-    # Precise FLOPs and Parameter measurement with fvcore
-    try:
-        flops_obj = FlopCountAnalysis(model, dummy_single)
-        flops_obj.unsupported_ops_warnings(False) # Hide unnecessary warnings
-        flops = flops_obj.total()
-        params = sum(p.numel() for p in model.parameters())
-        logger.info(f"[+] Params: {params/1e6:.2f}M | FLOPs: {flops/1e9:.4f}G")
-    except Exception as e:
-        logger.error(f"[!] fvcore FLOPs Error: {e}")
-        flops, params = 0, 0
+    # Parameter size is independent of resolution, computed once
+    params = sum(p.numel() for p in model.parameters())
+    logger.info(f"[+] Parameters: {params/1e6:.2f}M")
 
-    logger.info(f"\n{'Batch':<6} | {'Throughput':<15} | {'Latency':<10} | {'VRAM':<10} | {'GPU %':<7} | {'Temp':<6} | {'Power':<8}")
-    logger.info("-" * 85)
+    logger.info(f"\n{'Res (HxW)':<10} | {'FLOPs (G)':<10} | {'FPS':<10} | {'Lat (ms)':<10} | {'VRAM (MB)':<10} | {'GPU %':<7} | {'Temp':<6} | {'Power':<8}")
+    logger.info("-" * 95)
     
-    batch_results = []
+    results = []
     
-    for b_size in BATCH_SIZES:
+    for res in RESOLUTIONS:
         gc.collect()
         if torch.cuda.is_available():
             torch.cuda.empty_cache()
             torch.cuda.reset_peak_memory_stats(device)
             
-        dummy_input = torch.randn(b_size, *INPUT_SHAPE).to(device)
+        # Batch size fixed at 1
+        dummy_input = torch.randn(1, 3, res, res).to(device)
         
+        # 1. FLOPs Measurement (specific to each resolution)
+        try:
+            flops_obj = FlopCountAnalysis(model, dummy_input)
+            flops_obj.unsupported_ops_warnings(False) 
+            flops_obj.uncalled_modules_warnings(False)
+            flops = flops_obj.total()
+            flops_g = flops / 1e9
+        except Exception as e:
+            logger.error(f"[!] fvcore FLOPs Error ({res}x{res}): {e}")
+            flops_g = 0.0
+
+        # 2. Performance Measurement
         try:
             with torch.inference_mode():
                 for _ in range(WARMUP_ROUNDS): _ = model(dummy_input)
@@ -175,7 +175,7 @@ def run_inference_benchmark(model, model_name):
             
             if torch.cuda.is_available():
                 start_evt = torch.cuda.Event(enable_timing=True)
-                end_evt = torch.cuda.Event(enable_timing=True)
+                end_evt = torch.cuda.Event(enable_timing=True)HalspNet
                 
                 start_evt.record()
                 with torch.inference_mode():
@@ -192,22 +192,23 @@ def run_inference_benchmark(model, model_name):
             gpu_util, gpu_temp, gpu_power = monitor.stop()
             
             avg_latency = total_time_ms / TEST_ROUNDS
-            throughput = (TEST_ROUNDS * b_size) / (total_time_ms / 1000)
+            fps = 1000 / avg_latency
             vram_mb = torch.cuda.max_memory_allocated(device) / (1024**2) if torch.cuda.is_available() else 0
             
-            logger.info(f"{b_size:<6} | {throughput:<15.2f} | {avg_latency:<10.2f} | {vram_mb:<10.2f} | {gpu_util:<7} | {gpu_temp:<6} | {gpu_power:<8}")
-            batch_results.append((b_size, throughput, avg_latency, vram_mb, gpu_util, gpu_temp, gpu_power))
+            res_str = f"{res}x{res}"
+            logger.info(f"{res_str:<10} | {flops_g:<10.4f} | {fps:<10.2f} | {avg_latency:<10.2f} | {vram_mb:<10.2f} | {gpu_util:<7} | {gpu_temp:<6} | {gpu_power:<8}")
+            results.append((res_str, flops_g, fps, avg_latency, vram_mb, gpu_util, gpu_temp, gpu_power))
             
         except RuntimeError as e:
+            res_str = f"{res}x{res}"
             if "out of memory" in str(e).lower():
-                logger.info(f"{b_size:<6} | {'OOM':<15} | {'-':<10} | {'-':<10} | {'-':<7} | {'-':<6} | {'-':<8}")
-                batch_results.append((b_size, "OOM", "-", "-", "-", "-", "-"))
+                logger.info(f"{res_str:<10} | {flops_g:<10.4f} | {'OOM':<10} | {'-':<10} | {'-':<10} | {'-':<7} | {'-':<6} | {'-':<8}")
+                results.append((res_str, flops_g, "OOM", "-", "-", "-", "-", "-"))
                 if torch.cuda.is_available():
                     torch.cuda.empty_cache()
-                break
             else: raise e
 
-    return {"name": model_name, "params": params, "flops": flops, "results": batch_results}
+    return {"name": model_name, "params": params, "results": results}
 
 # ==========================================
 # 4. MAIN FLOW
@@ -215,9 +216,9 @@ def run_inference_benchmark(model, model_name):
 if __name__ == "__main__":
     final_reports = []
     
-    # LAZY LOADING - To prevent memory overflow
+    # LAZY LOADING
     model_loaders = [
-        lambda: get_custom_halsp_model(MODEL_PATH),
+        lambda: get_custom_halvit_model(MODEL_PATH),
         get_standard_torchvision_model,
         get_efficientnet,
         get_mobilenet,
@@ -233,7 +234,7 @@ if __name__ == "__main__":
         m, name = loader()
         
         if m is not None:
-            rep = run_inference_benchmark(m, name)
+            rep = run_resolution_benchmark(m, name)
             final_reports.append(rep)
             
             del m
@@ -243,20 +244,20 @@ if __name__ == "__main__":
                 torch.cuda.reset_peak_memory_stats(device)
 
     # --- REPORTING ---
-    report_file = "inference_comparison_report_hw.txt"
+    report_file = "inference_fps_resolution_report.txt"
     with open(report_file, "w") as f:
-        f.write("--- COMPREHENSIVE INFERENCE PERFORMANCE REPORT (224x224 INPUT) ---\n\n")
+        f.write("--- REAL-TIME FPS AND RESOLUTION SCALING REPORT (BATCH=1) ---\n\n")
         for rep in final_reports:
             f.write(f"MODEL: {rep['name']}\n")
-            f.write(f"Params: {rep['params']/1e6:.2f} M | Forward FLOPs: {rep['flops']/1e9:.4f} G\n")
-            f.write(f"{'Batch':<6} | {'TP (img/s)':<15} | {'Lat (ms)':<10} | {'VRAM (MB)':<10} | {'GPU%':<7} | {'Temp':<6} | {'Power':<8}\n")
-            f.write("-" * 85 + "\n")
+            f.write(f"Parameters: {rep['params']/1e6:.2f} M\n")
+            f.write(f"{'Res (HxW)':<10} | {'FLOPs (G)':<10} | {'FPS':<10} | {'Lat (ms)':<10} | {'VRAM (MB)':<10} | {'GPU%':<7} | {'Temp':<6} | {'Power':<8}\n")
+            f.write("-" * 95 + "\n")
             for r in rep["results"]:
-                b, t, l, v, gu, gt, gp = r
-                if t == "OOM":
-                    f.write(f"{b:<6} | {'OOM':<15} | {'-':<10} | {'-':<10} | {'-':<7} | {'-':<6} | {'-':<8}\n")
+                res, fl, fps, l, v, gu, gt, gp = r
+                if fps == "OOM":
+                    f.write(f"{res:<10} | {fl:<10.4f} | {'OOM':<10} | {'-':<10} | {'-':<10} | {'-':<7} | {'-':<6} | {'-':<8}\n")
                 else:
-                    f.write(f"{b:<6} | {t:<15.2f} | {l:<10.2f} | {v:<10.2f} | {gu:<7} | {gt:<6} | {gp:<8}\n")
-            f.write("\n" + "="*85 + "\n\n")
+                    f.write(f"{res:<10} | {fl:<10.4f} | {fps:<10.2f} | {l:<10.2f} | {v:<10.2f} | {gu:<7} | {gt:<6} | {gp:<8}\n")
+            f.write("\n" + "="*95 + "\n\n")
 
-    logger.info(f"\n>>> Comparative inference report saved successfully as '{report_file}'.")
+    logger.info(f"\n>>> FPS Resolution report successfully saved as '{report_file}'.")
