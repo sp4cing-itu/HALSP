@@ -74,7 +74,7 @@ The following tables present the exhaustive benchmark results of the HALSP confi
 
 ### Training Step Performance
 
-| Model | Active Frac. ($r_a$) | Batch Size | Throughput (images/s) | Latency (ms) | Peak VRAM (MB) |
+| Model | Active Rat. ($r_a$) | Batch Size | Throughput (images/s) | Latency (ms) | Peak VRAM (MB) |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | **HALSP 50** | 0.1 | 8 | 631.8 | 12.7 | 554.2 |
 | **HALSP 50** | 0.1 | 16 | 1130.1 | 14.2 | 1084.1 |
