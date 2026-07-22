@@ -1,10 +1,10 @@
-[DEBUG] OpNetStage: 3 Block | Matrix: 64x256 (Shared)
-[DEBUG] OpNetStage: 4 Block | Matrix: 128x512 (Shared)
-[DEBUG] OpNetStage: 23 Block | Matrix: 256x1024 (Shared)
-[DEBUG] OpNetStage: 3 Block | Matrix: 512x2048 (Shared)
+[DEBUG] HalspNetStage: 3 Block | Matrix: 64x256 (Shared)
+[DEBUG] HalspNetStage: 4 Block | Matrix: 128x512 (Shared)
+[DEBUG] HalspNetStage: 23 Block | Matrix: 256x1024 (Shared)
+[DEBUG] HalspNetStage: 3 Block | Matrix: 512x2048 (Shared)
 
 ===============================================================================================
-MODEL: HaLVIT sparse 101 (Dense Eval) (FPS TEST)
+MODEL: HalspNet 101 (Dense Eval) (FPS TEST)
 ===============================================================================================
 [+] Parameters: 1.75M
 
@@ -18,13 +18,13 @@ Res (HxW)  | FLOPs (G)  | FPS        | Lat (ms)   | VRAM (MB)  | GPU %   | Temp 
 1088x1088  | 23.7704    | 146.38     | 6.83       | 435.61     | 100%    | 43C    | 245.8W  
 
 
-[DEBUG] OpNetStage: 3 Block | Matrix: 64x256 (Shared)
-[DEBUG] OpNetStage: 4 Block | Matrix: 128x512 (Shared)
-[DEBUG] OpNetStage: 6 Block | Matrix: 256x1024 (Shared)
-[DEBUG] OpNetStage: 3 Block | Matrix: 512x2048 (Shared)
+[DEBUG] HalspNetStage: 3 Block | Matrix: 64x256 (Shared)
+[DEBUG] HalspNetStage: 4 Block | Matrix: 128x512 (Shared)
+[DEBUG] HalspNetStage: 6 Block | Matrix: 256x1024 (Shared)
+[DEBUG] HalspNetStage: 3 Block | Matrix: 512x2048 (Shared)
 
 ===============================================================================================
-MODEL: HaLVIT sparse 50 (Dense Eval) (FPS TEST)
+MODEL: HalspNet 50 (Dense Eval) (FPS TEST)
 ===============================================================================================
 [+] Parameters: 1.71M
 
