@@ -6,10 +6,10 @@ GPU: NVIDIA A100-SXM4-40GB
 
 Preparing Dataset...
 100% 169M/169M [00:14<00:00, 11.8MB/s]
-[DEBUG] OpNetStage: 3 Blok | Matris: 64x256 (Shared)
-[DEBUG] OpNetStage: 4 Blok | Matris: 128x512 (Shared)
-[DEBUG] OpNetStage: 6 Blok | Matris: 256x1024 (Shared)
-[DEBUG] OpNetStage: 3 Blok | Matris: 512x2048 (Shared)
+[DEBUG] HalspNetStage: 3 Blok | Matris: 64x256 (Shared)
+[DEBUG] HalspNetStage: 4 Blok | Matris: 128x512 (Shared)
+[DEBUG] HalspNetStage: 6 Blok | Matris: 256x1024 (Shared)
+[DEBUG] HalspNetStage: 3 Blok | Matris: 512x2048 (Shared)
 
 Epoch  | Batch  | Loss     | Acc@1    | LR        | GradNorm  
 --------------------------------------------------------------
@@ -1015,4 +1015,3 @@ ID  | CLASS                | ACCURACY
 99  | worm                 | %84.00
 
 Log saved: training_log.txt
-
